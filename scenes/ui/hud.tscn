@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dessxnq7084o1"]
 
+[ext_resource type="Texture2D" uid="uid://cc3awo5iyxvi2" path="res://ui/rage_fill.png" id="2_bo48s"]
 [ext_resource type="Script" uid="uid://ctdlgn2gv0slu" path="res://scenes/ui/crosshair.gd" id="2_hqnrr"]
+[ext_resource type="Texture2D" uid="uid://d1qbb6g1gc2iq" path="res://ui/rage_frame.png" id="3_8qguk"]
+[ext_resource type="FontFile" uid="uid://dv6s86xayt4rq" path="res://assets/font/DeadSecretary.ttf" id="4_8qguk"]
 
 [node name="HUD" type="CanvasLayer" unique_id=464664150 groups=["hud"]]
 
@@ -35,9 +38,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -85.29498
+offset_top = -172.875
 offset_right = 240.0
-offset_bottom = -58.29486
+offset_bottom = -145.87479
 grow_vertical = 0
 value = 100.0
 
@@ -47,9 +50,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 40.0
-offset_top = -114.80499
-offset_right = 80.0
-offset_bottom = -91.80487
+offset_top = -172.875
+offset_right = 79.999985
+offset_bottom = -149.87482
 grow_vertical = 0
 text = "HP"
 
@@ -78,6 +81,7 @@ grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
 [node name="DamageVignette" type="ColorRect" parent="HUDRoot" unique_id=720453885]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,20 +131,38 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "PRESS ENTER TO RESTART"
 
-[node name="RageBar" type="ProgressBar" parent="HUDRoot" unique_id=1941631209]
-layout_mode = 0
-offset_left = 41.0
-offset_top = 505.0
-offset_right = 241.0
-offset_bottom = 521.0
-show_percentage = false
+[node name="RageBarRoot" type="Control" parent="HUDRoot" unique_id=576594768]
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 575.0
+offset_right = 431.0
+offset_bottom = 615.0
 
-[node name="RageLabel" type="Label" parent="HUDRoot/RageBar" unique_id=1667067050]
+[node name="RageFill" type="TextureRect" parent="HUDRoot/RageBarRoot" unique_id=1623672220]
+clip_contents = true
 layout_mode = 0
-offset_left = -1.0
-offset_top = -31.0
-offset_right = 41.0
-offset_bottom = -8.0
+offset_top = 16.0
+offset_right = 389.0
+offset_bottom = 34.0
+texture = ExtResource("2_bo48s")
+expand_mode = 1
+
+[node name="RageFrame" type="TextureRect" parent="HUDRoot/RageBarRoot" unique_id=935687129]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 40.0
+texture = ExtResource("3_8qguk")
+expand_mode = 1
+
+[node name="RageLabel" type="Label" parent="HUDRoot/RageBarRoot" unique_id=820527459]
+layout_mode = 0
+offset_left = 241.0
+offset_top = -22.0
+offset_right = 386.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_8qguk")
+theme_override_font_sizes/font_size = 26
 text = "RAGE"
 
 [node name="FireVignette" type="ColorRect" parent="HUDRoot" unique_id=1061490750]

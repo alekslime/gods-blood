@@ -5,8 +5,10 @@ extends CanvasLayer
 @onready var ammo_label: Label = $HUDRoot/AmmoLabel
 @onready var damage_vignette: ColorRect = $HUDRoot/DamageVignette
 @onready var death_screen: ColorRect = $HUDRoot/DeathScreen
-@onready var rage_bar: ProgressBar = $HUDRoot/RageBar
-@onready var rage_label: Label = $HUDRoot/RageBar/RageLabel
+@onready var rage_bar_root: Control = $HUDRoot/RageBarRoot
+@onready var rage_fill: TextureRect = $HUDRoot/RageBarRoot/RageFill
+@onready var rage_frame: TextureRect = $HUDRoot/RageBarRoot/RageFrame
+@onready var rage_label: Label = $HUDRoot/RageBarRoot/RageLabel
 @onready var rage_vignette: ColorRect = $HUDRoot/RageVignette
 
 var vignette_alpha := 0.0
@@ -24,6 +26,10 @@ const DASH_ICON_MARGIN = 16
 var dash_icons: Array = []
 var dash_fill_bars: Array = []
 
+# --- RAGE BAR EFFECTS ---
+var rage_pulse_time := 0.0
+var rage_full_timer := 0.0       # how long rage has been at 100
+var rage_is_full := false
 
 func _ready() -> void:
 	var parent = damage_vignette.get_parent()
@@ -85,6 +91,27 @@ func _process(delta: float) -> void:
 	if fire_vignette:
 		fire_alpha = lerp(fire_alpha, 0.0, delta * 2.0)
 		fire_vignette.color = Color(1.0, 0.75, 0.0, fire_alpha)
+	# Rage pulse + flicker when full
+	if rage_is_full:
+		rage_full_timer += delta
+		rage_pulse_time += delta
+
+		var pulse = (sin(rage_pulse_time * 8.0) + 1.0) / 2.0
+		var pulse_strength = lerp(0.7, 1.0, pulse)
+
+		var flicker = 1.0
+		if rage_full_timer > 2.0:
+			flicker = randf_range(0.55, 1.0)
+
+		rage_fill.modulate.a = pulse_strength * flicker
+
+		# Shake
+		var shake_amount = 0.8 if rage_full_timer < 2.0 else 1.5
+		rage_bar_root.position.x = rage_bar_root.position.x + randf_range(-shake_amount, shake_amount)
+		rage_bar_root.position.y = rage_bar_root.position.y + randf_range(-shake_amount, shake_amount)
+	else:
+		rage_bar_root.position = Vector2(rage_bar_root.position.x, rage_bar_root.position.y).lerp(
+			Vector2(31, 575), 0.25)
 
 
 func update_dash_charges(charges: int, recharge_timers: Array, recharge_time: float) -> void:
@@ -146,12 +173,28 @@ func update_ammo(current: int, maximum: int, infinite: bool) -> void:
 func show_death_screen() -> void:
 	death_screen.visible = true
 
-
 func update_rage(value: float) -> void:
-	rage_bar.value = value
+	# Fill bar: scale width left to right based on rage 0→100
+	var t = clamp(value / 100.0, 0.0, 1.0)
+	rage_fill.size.x = 400.0 * t
+
+	# Color shift: dull red → corrupt gold
+	var fill_color = Color(0.55, 0.05, 0.05).lerp(Color(0.94, 0.75, 0.03), t)
+	rage_fill.modulate = fill_color
+
+	# Track full state
 	if value >= 100.0:
-		rage_label.text = "RAGE - ACTIVE"
-		rage_label.add_theme_color_override("font_color", Color(1, 0.2, 0))
+		if not rage_is_full:
+			rage_is_full = true
+			rage_full_timer = 0.0
+	else:
+		rage_is_full = false
+		rage_full_timer = 0.0
+
+	# Label
+	if value >= 100.0:
+		rage_label.text = "RAGE - PRESS G"
+		rage_label.add_theme_color_override("font_color", Color(0.94, 0.75, 0.03))
 	else:
 		rage_label.text = "RAGE"
 		rage_label.add_theme_color_override("font_color", Color(1, 1, 1))
