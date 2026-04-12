@@ -56,6 +56,14 @@ shader = ExtResource("15_e14y5")
 shader_parameter/grain_strength = 0.08
 shader_parameter/grain_scale = 2.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fixga"]
+emission_enabled = true
+emission = Color(0.8, 0.13333334, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e14y5"]
+radius = 1.0
+height = 2.0
+
 [node name="TestLevel" type="Node3D" unique_id=1500266787]
 
 [node name="HUD" parent="." unique_id=464664150 instance=ExtResource("3_nweu1")]
@@ -192,3 +200,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Moon" type="MeshInstance3D" parent="." unique_id=597186044]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -60.968945, 77.89316, -104.70288)
+material_override = SubResource("StandardMaterial3D_fixga")
+mesh = SubResource("SphereMesh_e14y5")
