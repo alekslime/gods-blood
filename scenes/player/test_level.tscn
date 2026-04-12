@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://eqbaw6lqu8a"]
+
+[ext_resource type="PackedScene" uid="uid://bsy4kx5xs0j6l" path="res://scenes/player/player.tscn" id="1_ddwea"]
+[ext_resource type="PackedScene" uid="uid://cwskuqe5ucrp3" path="res://scenes/enemies/demon.tscn" id="2_42xw0"]
+[ext_resource type="PackedScene" uid="uid://dvmxsp2o485xe" path="res://assets/world/altar_ruins.glb" id="2_rvrqd"]
+[ext_resource type="PackedScene" uid="uid://deo0vwl776d74" path="res://PauseMenu.tscn" id="3_hc6b8"]
+[ext_resource type="PackedScene" uid="uid://dessxnq7084o1" path="res://scenes/ui/hud.tscn" id="3_nweu1"]
+[ext_resource type="Script" uid="uid://cf66vaypto2ba" path="res://scenes/ui/hud.gd" id="4_acnbp"]
+[ext_resource type="Script" uid="uid://bojnf7n3oyreg" path="res://scripts/level_manager.gd" id="6_lj68t"]
+[ext_resource type="Script" uid="uid://bp3ej00i1affb" path="res://scripts/end_zone.gd" id="7_opgfa"]
+[ext_resource type="PackedScene" uid="uid://pb1g2me3jg55" path="res://RangedEnemy.tscn" id="8_yfsjt"]
+[ext_resource type="PackedScene" uid="uid://ds6sf5d1whcst" path="res://scenes/enemies/fast_enemy.tscn" id="10_daqkd"]
+[ext_resource type="PackedScene" uid="uid://cfe5po52luu80" path="res://HealthPickup.tscn" id="11_uoxps"]
+[ext_resource type="PackedScene" uid="uid://brrfftrnv42ls" path="res://Medkit.tscn" id="12_0ajne"]
+[ext_resource type="PackedScene" uid="uid://1a5brlttxmhf" path="res://MusicManager.tscn" id="14_fixga"]
+[ext_resource type="Shader" uid="uid://cfsunswhajpkq" path="res://scenes/player/test_level.gdshader" id="15_e14y5"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nweu1"]
+vertices = PackedVector3Array(-24.5, 1, -24.5, -24.5, 1, 24.5, 24.5, 1, 24.5, 24.5, 1, -24.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e14y5"]
+size = Vector3(161.88562, 1, 184.49554)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_daqkd"]
+
+[sub_resource type="Sky" id="Sky_lj68t"]
+sky_material = SubResource("PanoramaSkyMaterial_daqkd")
+
+[sub_resource type="Environment" id="Environment_opgfa"]
+background_mode = 1
+background_color = Color(0.039215688, 0, 0.08235294, 1)
+sky = SubResource("Sky_lj68t")
+ambient_light_source = 2
+ambient_light_color = Color(0.039215688, 0, 0.08235294, 1)
+ssao_enabled = true
+ssao_radius = 1.5
+glow_enabled = true
+glow_intensity = 0.8
+glow_bloom = 0.5
+glow_blend_mode = 0
+glow_hdr_threshold = 0.5
+fog_enabled = true
+fog_light_color = Color(0.8, 0.13333334, 0, 1)
+fog_light_energy = 0.27
+fog_density = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_lj68t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_opgfa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yfsjt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdquw"]
+shader = ExtResource("15_e14y5")
+shader_parameter/grain_strength = 0.08
+shader_parameter/grain_scale = 2.0
+
+[node name="TestLevel" type="Node3D" unique_id=1500266787]
+
+[node name="HUD" parent="." unique_id=464664150 instance=ExtResource("3_nweu1")]
+script = ExtResource("4_acnbp")
+
+[node name="PauseMenu" parent="." unique_id=252563126 instance=ExtResource("3_hc6b8")]
+visible = false
+
+[node name="Player" parent="." unique_id=2004408079 instance=ExtResource("1_ddwea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.868454, 5.816125, 71.58407)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=1956567446]
+
+[node name="Demons" type="Node3D" parent="Enemies" unique_id=206401794]
+
+[node name="Demon" parent="Enemies/Demons" unique_id=2137241024 instance=ExtResource("2_42xw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.245281, 10.297092, -13.958356)
+
+[node name="Demon2" parent="Enemies/Demons" unique_id=1670029955 instance=ExtResource("2_42xw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.508947, 10.297093, -7.8350267)
+
+[node name="Demon3" parent="Enemies/Demons" unique_id=1947657061 instance=ExtResource("2_42xw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.15863, 10.297092, -14.358571)
+
+[node name="Demon4" parent="Enemies/Demons" unique_id=2106381293 instance=ExtResource("2_42xw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.338375, 10.297094, -8.244275)
+
+[node name="Demon5" parent="Enemies/Demons" unique_id=1498914160 instance=ExtResource("2_42xw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1178856, 10.297092, -17.817066)
+
+[node name="Demon6" parent="Enemies/Demons" unique_id=1209973784 instance=ExtResource("2_42xw0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.738699, 10.297092, -18.24989)
+
+[node name="CharacterBody3D6" parent="Enemies" unique_id=408617571 instance=ExtResource("8_yfsjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.280689, 4.007948, 7.599945)
+
+[node name="CharacterBody3D7" parent="Enemies" unique_id=1337854314 instance=ExtResource("8_yfsjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.275864, 4.007948, -23.325275)
+
+[node name="CharacterBody3D8" parent="Enemies" unique_id=33195878 instance=ExtResource("8_yfsjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.31886, 4.007948, -2.4654732)
+
+[node name="FastEnemy10" parent="Enemies" unique_id=1849370541 instance=ExtResource("10_daqkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.530807, 8.022303, 7.169615)
+health_pickup_scene = ExtResource("11_uoxps")
+
+[node name="FastEnemy11" parent="Enemies" unique_id=1784090868 instance=ExtResource("10_daqkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.436417, 8.022303, 12.27347)
+health_pickup_scene = ExtResource("11_uoxps")
+
+[node name="FastEnemy12" parent="Enemies" unique_id=208355562 instance=ExtResource("10_daqkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.407917, 8.022303, 18.621666)
+health_pickup_scene = ExtResource("11_uoxps")
+
+[node name="FastEnemy13" parent="Enemies" unique_id=1743478775 instance=ExtResource("10_daqkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.407917, 8.022303, 11.621666)
+health_pickup_scene = ExtResource("11_uoxps")
+
+[node name="FastEnemy14" parent="Enemies" unique_id=1825090908 instance=ExtResource("10_daqkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.407917, 8.022303, 7.621666)
+health_pickup_scene = ExtResource("11_uoxps")
+
+[node name="FastEnemy15" parent="Enemies" unique_id=1495343466 instance=ExtResource("10_daqkd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.407917, 8.022303, 7.621666)
+health_pickup_scene = ExtResource("11_uoxps")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1332983003]
+transform = Transform3D(0.70710677, -0.18301268, 0.68301266, 0, 0.96592575, 0.25881904, -0.70710677, -0.18301268, 0.68301266, 0, 0, 0)
+light_color = Color(0.8, 0.2, 0, 1)
+light_energy = 1.2
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1462321222]
+navigation_mesh = SubResource("NavigationMesh_nweu1")
+
+[node name="Sketchfab_Scene" parent="NavigationRegion3D" unique_id=1729600673 instance=ExtResource("2_rvrqd")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.9736748, 2.4885693, -11.512798)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D" unique_id=83766666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4813232, 1.9208336, 95.65671)
+use_collision = true
+size = Vector3(143.99097, 1, 192.31342)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1347256124]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D" unique_id=968090165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.597595, 2.0187225, 120.87915)
+shape = SubResource("BoxShape3D_e14y5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1063907928]
+environment = SubResource("Environment_opgfa")
+
+[node name="LevelManager" type="Node" parent="." unique_id=1797066187 node_paths=PackedStringArray("door")]
+script = ExtResource("6_lj68t")
+door = NodePath("../Door")
+
+[node name="Door" type="StaticBody3D" parent="." unique_id=1877258599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.706338, 1.5347323, 12.559709)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=971347266]
+transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 0.3, 0, -0.8194413, 0)
+mesh = SubResource("BoxMesh_lj68t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1193520503]
+transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 0.3, 0, 1.3398662, 0)
+shape = SubResource("BoxShape3D_opgfa")
+
+[node name="EndZone" type="Area3D" parent="Door" unique_id=216492895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20854044, -0.11110401, -0.4828844)
+script = ExtResource("7_opgfa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/EndZone" unique_id=1950813684]
+transform = Transform3D(5.794061, 0, 0, 0, 6.3497467, 0, 0, 0, -4.733121, 0, 0, 0)
+shape = SubResource("BoxShape3D_yfsjt")
+
+[node name="Node" parent="." unique_id=634783044 instance=ExtResource("14_fixga")]
+
+[node name="Medkits" type="Node3D" parent="." unique_id=1760557411]
+
+[node name="Medkit" parent="Medkits" unique_id=1483463105 instance=ExtResource("12_0ajne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.70444, 2.9429126, 22.991299)
+
+[node name="Medkit2" parent="Medkits" unique_id=725636732 instance=ExtResource("12_0ajne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.446915, 2.9429126, 19.96429)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=764981364]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=825763280]
+material = SubResource("ShaderMaterial_kdquw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

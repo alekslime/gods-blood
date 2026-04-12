@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://l5dccqbehvb1"]
+
+[ext_resource type="Script" uid="uid://bac8lralyfbke" path="res://godsbane_revolver.gd" id="1_e8lqh"]
+[ext_resource type="AudioStream" uid="uid://cjdwxbqgtbote" path="res://assets/sounds/sounds+/RevolverShootSound.mp3" id="2_33mnf"]
+[ext_resource type="AudioStream" uid="uid://0a5txh4xoail" path="res://assets/sounds/sounds+/RevolverReloadSound.mp3" id="3_33mnf"]
+[ext_resource type="AudioStream" uid="uid://b6onethljt4jk" path="res://assets/sounds/sounds+/BulletEmptySound.mp3" id="4_006oi"]
+[ext_resource type="AudioStream" uid="uid://dulnfkc18d3le" path="res://assets/sounds/sounds+/AdsSound.mp3" id="5_jxee0"]
+[ext_resource type="AudioStream" uid="uid://dd0dyl1vvfleh" path="res://assets/sounds/sounds+/RevolverHitSound.mp3" id="6_f2mw3"]
+[ext_resource type="AudioStream" uid="uid://bk3x2j4g0k7i8" path="res://assets/sounds/sounds+/RevolverLoad.mp3" id="7_006oi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bdm0o"]
+
+[node name="GodsbaneRevolver" type="Node3D" unique_id=1750825862]
+script = ExtResource("1_e8lqh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=685117781]
+transform = Transform3D(0.16379946, 0, 0, 0, 0.1, 0, 0, 0, 0.6, 0, 0, 0)
+mesh = SubResource("BoxMesh_bdm0o")
+
+[node name="ShootPoint" type="Node3D" parent="." unique_id=676901140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="FireTimer" type="Timer" parent="." unique_id=1375846228]
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="." unique_id=819368467]
+stream = ExtResource("2_33mnf")
+
+[node name="ReloadSound" type="AudioStreamPlayer" parent="." unique_id=1978196459]
+stream = ExtResource("3_33mnf")
+
+[node name="EmptySound" type="AudioStreamPlayer" parent="." unique_id=1308560607]
+stream = ExtResource("4_006oi")
+
+[node name="AdsSound" type="AudioStreamPlayer" parent="." unique_id=1485596235]
+stream = ExtResource("5_jxee0")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=1236668136]
+stream = ExtResource("6_f2mw3")
+
+[node name="CycleSound" type="AudioStreamPlayer" parent="." unique_id=1369570590]
+stream = ExtResource("7_006oi")

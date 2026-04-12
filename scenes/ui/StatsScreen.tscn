@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://d34b1irtdx2t6"]
+
+[ext_resource type="Script" uid="uid://coqburuy1371t" path="res://scenes/ui/stats_screen.gd" id="1_10ofi"]
+
+[node name="StatsScreen" type="CanvasLayer" unique_id=1733387987]
+script = ExtResource("1_10ofi")
+
+[node name="Control" type="Control" parent="." unique_id=1740539852]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=384126219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.24780053, 0.15170373, 0.3133042, 0.95000005)
+
+[node name="TitleLabel" type="Label" parent="Control" unique_id=539813375]
+layout_mode = 0
+offset_left = 517.0
+offset_top = 329.0
+offset_right = 650.0
+offset_bottom = 352.0
+text = "LEVEL COMPLETE"
+
+[node name="KillsLabel" type="Label" parent="Control" unique_id=878848445]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 416.0
+offset_right = 657.0
+offset_bottom = 439.0
+text = "SOULS CLAIMED: 0"
+
+[node name="TimeLabel" type="Label" parent="Control" unique_id=2110727005]
+layout_mode = 0
+offset_left = 538.0
+offset_top = 388.0
+offset_right = 626.0
+offset_bottom = 411.0
+text = "TIME: 00:00"
+
+[node name="RankLabel" type="Label" parent="Control" unique_id=459476861]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 443.0
+offset_right = 611.0
+offset_bottom = 466.0
+text = "RANK: S"
+
+[node name="ContinueLabel" type="Label" parent="Control" unique_id=1533748202]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 536.0
+offset_right = 690.0
+offset_bottom = 559.0
+text = "PRESS ENTER TO CONTINUE"

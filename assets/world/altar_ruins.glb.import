@@ -1,0 +1,111 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dvmxsp2o485xe"
+path="res://.godot/imported/altar_ruins.glb-c3f1c63842beca9a09544233c61eda1b.scn"
+
+[deps]
+
+source_file="res://assets/world/altar_ruins.glb"
+dest_files=["res://.godot/imported/altar_ruins.glb-c3f1c63842beca9a09544233c61eda1b.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Altar_-3260_3/Object_9": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Arches_-3290_2/Object_7": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Entrance_-3270_1/Object_5": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Flag (1)_-3280_10/Object_23": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Flag_-3316_6/Object_15": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (1)_-22118_23/node_Plane001_-22116_25/Object_44": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (10)_-28220_15/node_Plane001_-28218_7/Object_29": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (11)_-28240_32/node_Plane001_-28238_12/Object_56": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (12)_-28226_22/node_Plane001_-28228_33/Object_41": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (13)_-28246_31/node_Plane001_-28248_28/Object_53": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (14)_-28206_29/node_Plane001_-28208_30/Object_50": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (2)_-22864_21/node_Plane001_-22866_24/Object_38": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (3)_-23936_34/node_Plane001_-23938_35/Object_59": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (4)_-23930_27/node_Plane001_-23928_26/Object_47": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (5)_-26960_9/node_Plane001_-26962_11/Object_21": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (6)_-26940_16/node_Plane001_-26942_17/Object_32": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (7)_-26974_8/node_Plane001_-26972_20/Object_18": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (8)_-26954_14/node_Plane001_-26952_13/Object_26": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane (9)_-26934_37/node_Plane001_-26932_36/Object_62": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Plane_-5828_18/node_Plane001_-5830_19/Object_35": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Platform_-3306_4/Object_11": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/root/GLTF_SceneRootNode/UnityGlTF_correctionMatrix_0/node_Tree_-3298_5/Object_13": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1

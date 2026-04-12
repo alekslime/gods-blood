@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nmnjesf5o6hf"
+path="res://.godot/imported/Osseous - Horror Music. Intense Synth & Percussion. Evil Choir Strings.mp3-e56f6ef1df669e1cd394f26812e1dd45.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Osseous - Horror Music. Intense Synth & Percussion. Evil Choir Strings.mp3"
+dest_files=["res://.godot/imported/Osseous - Horror Music. Intense Synth & Percussion. Evil Choir Strings.mp3-e56f6ef1df669e1cd394f26812e1dd45.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

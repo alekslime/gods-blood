@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://dessxnq7084o1"]
+
+[ext_resource type="Texture2D" uid="uid://cmpuugxht7htf" path="res://assets/ui/Crosshair.png" id="1_0mwgc"]
+
+[node name="HUD" type="CanvasLayer" unique_id=464664150 groups=["hud"]]
+
+[node name="HUDRoot" type="Control" parent="." unique_id=1758529509]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="HUDRoot" unique_id=847461185]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0mwgc")
+expand_mode = 1
+
+[node name="HealthBar" type="ProgressBar" parent="HUDRoot" unique_id=1155494160]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -85.29498
+offset_right = 240.0
+offset_bottom = -58.29486
+grow_vertical = 0
+value = 100.0
+
+[node name="HealthLabel" type="Label" parent="HUDRoot" unique_id=1167381654]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -114.80499
+offset_right = 80.0
+offset_bottom = -91.80487
+grow_vertical = 0
+text = "HP"
+
+[node name="AmmoLabel" type="Label" parent="HUDRoot" unique_id=1283670047]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.734985
+offset_top = -86.30499
+offset_right = -52.73474
+offset_bottom = -63.30493
+grow_horizontal = 0
+grow_vertical = 0
+text = "∞"
+
+[node name="RageVignette" type="ColorRect" parent="HUDRoot" unique_id=1406027168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="DamageVignette" type="ColorRect" parent="HUDRoot" unique_id=720453885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="DeathScreen" type="ColorRect" parent="HUDRoot" unique_id=693679244]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="HUDRoot/DeathScreen" unique_id=1613961917]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -61.859985
+offset_right = 169.5
+offset_bottom = 37.140015
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "YOU DIED"
+
+[node name="Label2" type="Label" parent="HUDRoot/DeathScreen" unique_id=1347661973]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = 26.119995
+offset_right = 99.0
+offset_bottom = 49.119995
+grow_horizontal = 2
+grow_vertical = 2
+text = "PRESS ENTER TO RESTART"
+
+[node name="RageBar" type="ProgressBar" parent="HUDRoot" unique_id=1941631209]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 505.0
+offset_right = 241.0
+offset_bottom = 521.0
+show_percentage = false
+
+[node name="RageLabel" type="Label" parent="HUDRoot/RageBar" unique_id=1667067050]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -31.0
+offset_right = 41.0
+offset_bottom = -8.0
+text = "RAGE"
+
+[node name="FireVignette" type="ColorRect" parent="HUDRoot" unique_id=1061490750]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bsy4kx5xs0j6l"]
+
+[ext_resource type="Script" uid="uid://b7ec6v21kbehb" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://xmk7wcsn2lhq" path="res://scripts/weapons/weapon_manager.gd" id="2_gmlin"]
+[ext_resource type="Script" uid="uid://bulh0sgaqys3g" path="res://scenes/player/player_hand.gd" id="2_qek5x"]
+[ext_resource type="PackedScene" uid="uid://bvpn04dhbg054" path="res://scenes/weapons/the_flame.tscn" id="3_lvxji"]
+[ext_resource type="PackedScene" uid="uid://uno1eslwoysw" path="res://scenes/weapons/godsbane.tscn" id="4_lvxji"]
+[ext_resource type="AudioStream" uid="uid://xlyfvhdpk1pn" path="res://assets/sounds/footstep.mp3" id="5_p47bc"]
+[ext_resource type="AudioStream" uid="uid://c1jy3g2ejdng4" path="res://assets/sounds/scream rage.mp3" id="6_0owmy"]
+[ext_resource type="Script" uid="uid://clp50rn201ga1" path="res://scenes/player/melee_system.gd" id="6_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://cb3qotn5b4hh" path="res://DivineSpear.tscn" id="6_ugbui"]
+[ext_resource type="PackedScene" uid="uid://l5dccqbehvb1" path="res://GodsbaneRevolver.tscn" id="7_fcs02"]
+[ext_resource type="AudioStream" uid="uid://ddjj5qf40h2dn" path="res://assets/sounds/heavy breathing.mp3" id="7_qek5x"]
+[ext_resource type="AudioStream" uid="uid://3wo65aecbkbu" path="res://assets/sounds/enemy_hit.mp3" id="10_h17s1"]
+[ext_resource type="AudioStream" uid="uid://i7ki6lnrffo3" path="res://assets/sounds/enemy_death.mp3" id="11_je7p5"]
+[ext_resource type="AudioStream" uid="uid://delob7wi3xj4" path="res://assets/sounds/dash.mp3" id="12_fm80t"]
+[ext_resource type="AudioStream" uid="uid://b7ragc7ke3g7f" path="res://assets/sounds/slide.mp3" id="13_gx1jg"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x7p2l"]
+radius = 0.4
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=2004408079 groups=["player"]]
+script = ExtResource("1_8afob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1505603881]
+shape = SubResource("CapsuleShape3D_x7p2l")
+
+[node name="Head" type="Node3D" parent="." unique_id=1424711971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1286173871]
+
+[node name="Hand" type="Node3D" parent="Head/Camera3D" unique_id=893320645]
+script = ExtResource("2_qek5x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/Hand" unique_id=740040690]
+
+[node name="WeaponHolder" type="Node3D" parent="Head/Camera3D" unique_id=867462404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, -0.5)
+script = ExtResource("2_gmlin")
+
+[node name="TheFlame" parent="Head/Camera3D/WeaponHolder" unique_id=1067543919 instance=ExtResource("3_lvxji")]
+
+[node name="Godsbane" parent="Head/Camera3D/WeaponHolder" unique_id=1750825862 instance=ExtResource("4_lvxji")]
+
+[node name="DivineSpear" parent="Head/Camera3D/WeaponHolder" unique_id=1333393634 instance=ExtResource("6_ugbui")]
+
+[node name="GodsbaneRevolver" parent="Head/Camera3D/WeaponHolder" unique_id=1724243147 instance=ExtResource("7_fcs02")]
+
+[node name="MeleeSystem" type="Node3D" parent="Head/Camera3D" unique_id=733479838]
+script = ExtResource("6_5gtgg")
+
+[node name="FootstepSound" type="AudioStreamPlayer" parent="." unique_id=1564946405]
+stream = ExtResource("5_p47bc")
+
+[node name="RageActivateSound" type="AudioStreamPlayer" parent="." unique_id=1863482007]
+stream = ExtResource("6_0owmy")
+
+[node name="RageBreathingSound" type="AudioStreamPlayer" parent="." unique_id=692461625]
+stream = ExtResource("7_qek5x")
+pitch_scale = 0.45
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=102557949]
+stream = ExtResource("10_h17s1")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=2019986628]
+stream = ExtResource("11_je7p5")
+
+[node name="DashSound" type="AudioStreamPlayer" parent="." unique_id=1828159159]
+stream = ExtResource("12_fm80t")
+pitch_scale = 1.43
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="." unique_id=234316658]
+stream = ExtResource("13_gx1jg")

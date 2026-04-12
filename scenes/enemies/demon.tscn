@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cwskuqe5ucrp3"]
+
+[ext_resource type="Script" uid="uid://b2335qenphbl2" path="res://scenes/enemies/demon.gd" id="1_8tk0w"]
+[ext_resource type="AudioStream" uid="uid://3wo65aecbkbu" path="res://assets/sounds/enemy_hit.mp3" id="2_h0qet"]
+[ext_resource type="AudioStream" uid="uid://i7ki6lnrffo3" path="res://assets/sounds/enemy_death.mp3" id="3_1i1fl"]
+[ext_resource type="PackedScene" uid="uid://dfr5xyrlqoeie" path="res://assets/enemy_meshes/Ch36_nonPBR.fbx" id="4_1i1fl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xer1k"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v2cwo"]
+radius = 0.8
+
+[node name="Demon" type="CharacterBody3D" unique_id=2137241024]
+script = ExtResource("1_8tk0w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1247813185]
+shape = SubResource("CapsuleShape3D_xer1k")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1633782860]
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=354434556]
+
+[node name="HitBox" type="Area3D" parent="." unique_id=1088177753]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox" unique_id=16314916]
+shape = SubResource("SphereShape3D_v2cwo")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=646201597]
+stream = ExtResource("2_h0qet")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=402471075]
+stream = ExtResource("3_1i1fl")
+
+[node name="Ch36_nonPBR" parent="." unique_id=1400320012 instance=ExtResource("4_1i1fl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9584842, 0)

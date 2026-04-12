@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr6x0x57mpa7l"
+path="res://.godot/imported/Council of Nine - Exit Statements.mp3-b5ed057f836d5a7b943882121bd0a0d9.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Council of Nine - Exit Statements.mp3"
+dest_files=["res://.godot/imported/Council of Nine - Exit Statements.mp3-b5ed057f836d5a7b943882121bd0a0d9.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

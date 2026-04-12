@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://deo0vwl776d74"]
+
+[ext_resource type="Script" uid="uid://bk23npscimyu8" path="res://pause_menu.gd" id="1_nov15"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=252563126]
+script = ExtResource("1_nov15")
+
+[node name="Control" type="Control" parent="." unique_id=1820823733]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Overlay" type="ColorRect" parent="Control" unique_id=344194575]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="VBoxContainer" parent="Control" unique_id=1007581526]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Control/Panel" unique_id=1443612881]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/Title" unique_id=270106409]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Resume" type="Button" parent="Control/Panel/Title/VBoxContainer" unique_id=865104230]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="Control/Panel/Title/VBoxContainer" unique_id=1081460914]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="Control/Panel/Title/VBoxContainer" unique_id=1133798020]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="Control/Panel/Title/VBoxContainer" unique_id=1592854740]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+
+[node name="SettingsPanel" type="VBoxContainer" parent="Control/Panel" unique_id=337883194]
+layout_mode = 2
+
+[node name="SensitivityLabel" type="Label" parent="Control/Panel/SettingsPanel" unique_id=278811847]
+layout_mode = 2
+
+[node name="SensitivitySlider" type="HSlider" parent="Control/Panel/SettingsPanel" unique_id=1639728882]
+layout_mode = 2
+min_value = 0.001
+max_value = 0.005
+step = 0.001
+value = 0.001
+
+[node name="Back" type="Button" parent="Control/Panel/SettingsPanel" unique_id=18047449]
+layout_mode = 2

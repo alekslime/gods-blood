@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b2hyebch3epkc"
+path="res://.godot/imported/Darkest Dungeon OST - Torchless - Ruins Combat.mp3-c0f6c7bc0fb61a7a76db8da4ddff1ce2.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Darkest Dungeon OST - Torchless - Ruins Combat.mp3"
+dest_files=["res://.godot/imported/Darkest Dungeon OST - Torchless - Ruins Combat.mp3-c0f6c7bc0fb61a7a76db8da4ddff1ce2.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ej80my254e37"
+path="res://.godot/imported/the_flame.obj-43b69b10e39bd2d7fe8379a4078873e8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/the_flame.obj-43b69b10e39bd2d7fe8379a4078873e8.mesh"]
+
+source_file="res://assets/models/the_flame.obj"
+dest_files=["res://.godot/imported/the_flame.obj-43b69b10e39bd2d7fe8379a4078873e8.mesh", "res://.godot/imported/the_flame.obj-43b69b10e39bd2d7fe8379a4078873e8.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bvpn04dhbg054"]
+
+[ext_resource type="Script" uid="uid://b7uxvspfd4cjw" path="res://scripts/weapons/the_flame.gd" id="1_uh6ns"]
+[ext_resource type="AudioStream" uid="uid://daxoe8y54xfjl" path="res://assets/sounds/flame_loop.mp3" id="2_kqv3t"]
+[ext_resource type="ArrayMesh" uid="uid://ej80my254e37" path="res://assets/models/the_flame.obj" id="3_hsml6"]
+[ext_resource type="AudioStream" uid="uid://ncspdyyrm77k" path="res://assets/sounds/sounds+/FlameEmptySound.mp3" id="4_sslnq"]
+[ext_resource type="AudioStream" uid="uid://3wo65aecbkbu" path="res://assets/sounds/enemy_hit.mp3" id="5_rv5sq"]
+[ext_resource type="AudioStream" uid="uid://bo4er3y4vxdcp" path="res://assets/sounds/sounds+/FlamethrowerRelease.mp3" id="6_rv5sq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kqv3t"]
+
+[node name="TheFlame" type="Node3D" unique_id=1067543919]
+script = ExtResource("1_uh6ns")
+
+[node name="RayCast" type="RayCast3D" parent="." unique_id=144874425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009609222, 0.27546817, -0.7676254)
+target_position = Vector3(0, -1, -3)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1587075035]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("BoxMesh_kqv3t")
+
+[node name="FlameParticles" type="GPUParticles3D" parent="." unique_id=1731116928]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5516243, 0, 0.14041704, -0.7890597)
+
+[node name="FireTimer" type="Timer" parent="." unique_id=923252586]
+
+[node name="TheFlame" type="MeshInstance3D" parent="." unique_id=1521473618]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.055939615, 0, 0.13700664)
+mesh = ExtResource("3_hsml6")
+
+[node name="FlameSound" type="AudioStreamPlayer" parent="." unique_id=1051560318]
+stream = ExtResource("2_kqv3t")
+
+[node name="IgniteSound" type="AudioStreamPlayer" parent="." unique_id=1347033833]
+stream = ExtResource("4_sslnq")
+
+[node name="FocusSound" type="AudioStreamPlayer" parent="." unique_id=849134503]
+stream = ExtResource("2_kqv3t")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=653347403]
+stream = ExtResource("5_rv5sq")
+
+[node name="AirReleaseSound" type="AudioStreamPlayer" parent="." unique_id=480039412]
+stream = ExtResource("6_rv5sq")

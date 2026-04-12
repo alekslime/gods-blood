@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ds6sf5d1whcst"]
+
+[ext_resource type="Script" uid="uid://bl0g6xr125xr4" path="res://scenes/enemies/fast_enemy.gd" id="1_ch7xw"]
+[ext_resource type="AudioStream" uid="uid://3wo65aecbkbu" path="res://assets/sounds/enemy_hit.mp3" id="2_q327q"]
+[ext_resource type="AudioStream" uid="uid://i7ki6lnrffo3" path="res://assets/sounds/enemy_death.mp3" id="3_ugc25"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1tp6v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eweki"]
+
+[node name="FastEnemy" type="CharacterBody3D" unique_id=1191754284]
+script = ExtResource("1_ch7xw")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=441744661]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1792078191]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_1tp6v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1405971995]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_eweki")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=212849969]
+wait_time = 0.5
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=159687521]
+stream = ExtResource("2_q327q")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=1324682874]
+stream = ExtResource("3_ugc25")

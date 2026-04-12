@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvdkvneo4esjw"
+path="res://.godot/imported/Hellblade_ Senua's Sacrifice Ambience - Main Menu.mp3-a8fab7baa86767b8026cddff37a1e6c2.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Hellblade_ Senua's Sacrifice Ambience - Main Menu.mp3"
+dest_files=["res://.godot/imported/Hellblade_ Senua's Sacrifice Ambience - Main Menu.mp3-a8fab7baa86767b8026cddff37a1e6c2.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
