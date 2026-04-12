@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dessxnq7084o1"]
 
-[ext_resource type="Texture2D" uid="uid://cmpuugxht7htf" path="res://assets/ui/Crosshair.png" id="1_0mwgc"]
+[ext_resource type="Script" uid="uid://ctdlgn2gv0slu" path="res://scenes/ui/crosshair.gd" id="2_hqnrr"]
 
 [node name="HUD" type="CanvasLayer" unique_id=464664150 groups=["hud"]]
 
@@ -26,8 +26,8 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_0mwgc")
 expand_mode = 1
+script = ExtResource("2_hqnrr")
 
 [node name="HealthBar" type="ProgressBar" parent="HUDRoot" unique_id=1155494160]
 layout_mode = 1

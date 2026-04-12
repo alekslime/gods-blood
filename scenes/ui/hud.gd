@@ -15,13 +15,14 @@ var fire_alpha := 0.0
 
 var heal_vignette: ColorRect = null
 var fire_vignette: ColorRect = null
+var crit_flash_rect: ColorRect = null
 
 # --- DASH CHARGE ICONS ---
 const DASH_ICON_SIZE = 14
 const DASH_ICON_GAP = 6
 const DASH_ICON_MARGIN = 16
-var dash_icons: Array = []           # ColorRect nodes
-var dash_fill_bars: Array = []       # inner fill bars showing recharge progress
+var dash_icons: Array = []
+var dash_fill_bars: Array = []
 
 
 func _ready() -> void:
@@ -39,17 +40,22 @@ func _ready() -> void:
 	fire_vignette.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	parent.add_child(fire_vignette)
 
+	crit_flash_rect = ColorRect.new()
+	crit_flash_rect.name = "CritFlash"
+	crit_flash_rect.color = Color(1.0, 1.0, 1.0, 0.0)
+	crit_flash_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	crit_flash_rect.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	parent.add_child(crit_flash_rect)
+
 	_build_dash_icons(parent)
 
 
 func _build_dash_icons(parent: Control) -> void:
-	# Positioned bottom-center, just above crosshair area
 	var total_width = 3 * DASH_ICON_SIZE + 2 * DASH_ICON_GAP
 	var start_x = get_viewport().get_visible_rect().size.x / 2.0 - total_width / 2.0
 	var y = get_viewport().get_visible_rect().size.y - DASH_ICON_MARGIN - DASH_ICON_SIZE - 40
 
 	for i in range(3):
-		# Outer frame
 		var frame = ColorRect.new()
 		frame.size = Vector2(DASH_ICON_SIZE, DASH_ICON_SIZE)
 		frame.position = Vector2(start_x + i * (DASH_ICON_SIZE + DASH_ICON_GAP), y)
@@ -57,11 +63,10 @@ func _build_dash_icons(parent: Control) -> void:
 		frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		parent.add_child(frame)
 
-		# Inner fill (recharge progress)
 		var fill = ColorRect.new()
 		fill.size = Vector2(DASH_ICON_SIZE, DASH_ICON_SIZE)
 		fill.position = Vector2(0, 0)
-		fill.color = Color(0.9, 0.85, 0.2, 1.0)  # gold when charged
+		fill.color = Color(0.9, 0.85, 0.2, 1.0)
 		fill.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		frame.add_child(fill)
 
@@ -88,12 +93,10 @@ func update_dash_charges(charges: int, recharge_timers: Array, recharge_time: fl
 			break
 		var fill: ColorRect = dash_fill_bars[i]
 		if i < charges:
-			# Fully charged — gold, full size
 			fill.color = Color(0.9, 0.85, 0.2, 1.0)
 			fill.size = Vector2(DASH_ICON_SIZE, DASH_ICON_SIZE)
 			fill.position = Vector2(0, 0)
 		else:
-			# Recharging — grey frame, fill grows upward from bottom
 			var t = 1.0 - clamp(recharge_timers[i] / recharge_time, 0.0, 1.0)
 			var fill_height = DASH_ICON_SIZE * t
 			fill.color = Color(0.5, 0.5, 0.5, 0.6)
@@ -111,6 +114,17 @@ func flash_heal() -> void:
 
 func flash_fire_regen() -> void:
 	fire_alpha = 0.85
+
+
+func flash_crit() -> void:
+	if not crit_flash_rect:
+		return
+	crit_flash_rect.color = Color(1.0, 1.0, 1.0, 0.18)
+	var tween = create_tween()
+	tween.tween_method(
+		func(v): crit_flash_rect.color = Color(1.0, 1.0, 1.0, v),
+		0.18, 0.0, 0.12
+	)
 
 
 func pulse_health_bar(amount: float) -> void:

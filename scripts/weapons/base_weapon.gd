@@ -185,6 +185,11 @@ func deal_damage(target: Node) -> void:
 		if player.hud:
 			player.hud.flash_fire_regen()
 
+	# --- CRIT ---
+	var is_crit = randf() < 0.15
+	if is_crit:
+		multiplier *= 3.0
+
 	var was_alive = target.get("current_health") > 0.0
 	target.take_damage(damage * multiplier)
 	var is_dead_now = target.get("is_dead") == true or target.get("current_health") <= 0.0
@@ -192,6 +197,17 @@ func deal_damage(target: Node) -> void:
 	# --- HITSTOP ---
 	var killed = was_alive and is_dead_now
 	_trigger_hitstop(killed)
+
+	# --- CRIT EFFECTS ---
+	if is_crit:
+		if player and player.has_method("shake"):
+			player.shake(0.05)
+		var hud = get_tree().get_first_node_in_group("hud")
+		if hud and hud.has_method("flash_crit"):
+			hud.flash_crit()
+		var crosshair = _get_crosshair(player)
+		if crosshair and crosshair.has_method("trigger_crit"):
+			crosshair.trigger_crit()
 
 	# --- HITMARKER ---
 	if player:
@@ -203,7 +219,7 @@ func deal_damage(target: Node) -> void:
 				crosshair.on_hit()
 
 	if player and player.has_method("add_rage") and not player.is_raging:
-		player.add_rage(0.8)
+		player.add_rage(0.8 * (3.0 if is_crit else 1.0))
 
 
 func _trigger_hitstop(killed: bool) -> void:

@@ -180,6 +180,14 @@ func _process(delta: float) -> void:
 	footstep_sound.pitch_scale = current_audio_pitch
 	rage_breathing_sound.pitch_scale = current_audio_pitch
 	rage_activate_sound.pitch_scale = current_audio_pitch
+	# Low HP pulse
+	if not fire_is_healing and current_health / max_health <= FIRE_TRIGGER_THRESHOLD:
+		var pulse = (sin(Time.get_ticks_msec() * 0.005) + 1.0) / 2.0
+		if hud:
+			hud.pulse_health_bar(pulse * 0.6)
+	elif not fire_is_healing:
+		if hud:
+			hud.pulse_health_bar(0.0)
 
 
 func _physics_process(delta: float) -> void:
