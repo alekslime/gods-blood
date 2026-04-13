@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dpd2ur7mc21pd"]
+
+[ext_resource type="Script" uid="uid://ctdwvio6eo4e5" path="res://Enemies/Vicar.gd" id="1_v8d64"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2sjh3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4c741"]
+
+[node name="TheVicar" type="CharacterBody3D" unique_id=1440458563]
+script = ExtResource("1_v8d64")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=349180978]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=750136986]
+
+[node name="PhaseMusic" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=13614942]
+
+[node name="VicarVoice" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=942426012]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=528869411]
+shape = SubResource("CapsuleShape3D_2sjh3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=531924892]
+mesh = SubResource("CapsuleMesh_4c741")
+
+[node name="AttackHitbox" type="Area3D" parent="." unique_id=284049880]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitbox" unique_id=453977389]
+
+[node name="ProjectileSpawn" type="Marker3D" parent="." unique_id=1777887680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3300388, -0.5)
+
+[node name="DecayParticles" type="GPUParticles3D" parent="." unique_id=802016285]

@@ -1,19 +1,19 @@
 extends CharacterBody3D
 
 # --- STATS ---
-@export var max_health: float = 25.0
+@export var max_health: float = 45.0
 @export var move_speed: float = 9.5
 @export var attack_damage: float = 8.0
 @export var attack_range: float = 1.8
 @export var chase_range: float = 28.0
-@export var leap_range: float = 7.0
+@export var leap_range: float = 8.0
 
 # --- LEAP ---
 const LEAP_SPEED := 22.0
 const LEAP_UPWARD := 5.0
 const LEAP_COOLDOWN_MIN := 1.4
-const LEAP_COOLDOWN_MAX := 3.0
-const LEAP_DAMAGE := 14.0
+const LEAP_COOLDOWN_MAX := 3.5
+const LEAP_DAMAGE := 20.0
 var leap_cooldown_timer := 0.0
 var is_leaping := false
 
@@ -28,8 +28,6 @@ var current_health: float
 var player: CharacterBody3D = null
 var is_dead: bool = false
 
-
-
 # --- HIT FLASH ---
 var flash_timer := 0.0
 const FLASH_DURATION := 0.08
@@ -37,12 +35,12 @@ var original_material: Material = null
 var flash_material: StandardMaterial3D = null
 
 # --- STAGGER ---
+# Angels stagger easily — they're unraveling, not tough
 var stagger_timer := 0.0
 const STAGGER_DURATION := 0.18
-const STAGGER_THRESHOLD := 25.0
+const STAGGER_THRESHOLD := 12.0
 var damage_accumulator := 0.0
 var is_staggered := false
-
 
 const GRAVITY = 24.0
 
@@ -60,7 +58,7 @@ var state: State = State.IDLE
 
 
 func _ready() -> void:
-	add_to_group("enemy")
+	add_to_group("enemies")
 	current_health = max_health
 	player = get_tree().get_first_node_in_group("player")
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
@@ -69,9 +67,10 @@ func _ready() -> void:
 	erratic_timer = randf_range(ERRATIC_INTERVAL_MIN, ERRATIC_INTERVAL_MAX)
 	original_material = mesh.get_active_material(0)
 	flash_material = StandardMaterial3D.new()
-	flash_material.albedo_color = Color(1, 0.1, 0.1)
+	# Angels flash cold blue — not red. They're not evil, just broken.
+	flash_material.albedo_color = Color(0.3, 0.4, 1.0)
 	flash_material.emission_enabled = true
-	flash_material.emission = Color(1, 0, 0)
+	flash_material.emission = Color(0.4, 0.5, 1.0)
 	flash_material.emission_energy_multiplier = 2.0
 
 
@@ -136,7 +135,7 @@ func _check_leap_landing() -> void:
 		if global_position.distance_to(player.global_position) <= attack_range * 1.5:
 			player.take_damage(LEAP_DAMAGE)
 			if player.has_method("shake"):
-				player.shake(0.1)
+				player.shake(0.12)
 
 
 func _update_erratic(delta: float) -> void:
@@ -237,7 +236,7 @@ func die() -> void:
 	death_sound.play()
 	GameManager.register_kill()
 	if player:
-		player.add_rage(15.0)
+		player.add_rage(18.0)
 	_spawn_death_particles()
 	_try_drop_health()
 	await get_tree().create_timer(0.3).timeout
@@ -267,7 +266,8 @@ func _spawn_death_particles() -> void:
 	material.gravity = Vector3(0, -9.8, 0)
 	material.scale_min = 0.06
 	material.scale_max = 0.18
-	material.color = Color(0.9, 0.05, 0.05)
+	# Angels die in cold blue — not red
+	material.color = Color(0.3, 0.4, 1.0)
 	var mesh_ref = SphereMesh.new()
 	mesh_ref.radius = 0.04
 	mesh_ref.height = 0.08

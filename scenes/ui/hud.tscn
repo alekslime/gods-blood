@@ -141,25 +141,27 @@ offset_bottom = 615.0
 [node name="RageFill" type="TextureRect" parent="HUDRoot/RageBarRoot" unique_id=1623672220]
 clip_contents = true
 layout_mode = 0
-offset_top = 16.0
-offset_right = 389.0
-offset_bottom = 34.0
+offset_top = 7.0
+offset_right = 394.0
+offset_bottom = 43.0
 texture = ExtResource("2_bo48s")
 expand_mode = 1
 
 [node name="RageFrame" type="TextureRect" parent="HUDRoot/RageBarRoot" unique_id=935687129]
 layout_mode = 0
-offset_right = 400.0
-offset_bottom = 40.0
+offset_left = -3.0
+offset_top = 5.0
+offset_right = 397.0
+offset_bottom = 45.0
 texture = ExtResource("3_8qguk")
 expand_mode = 1
 
 [node name="RageLabel" type="Label" parent="HUDRoot/RageBarRoot" unique_id=820527459]
 layout_mode = 0
-offset_left = 241.0
-offset_top = -22.0
-offset_right = 386.0
-offset_bottom = 35.0
+offset_left = -2.0
+offset_top = -31.0
+offset_right = 143.0
+offset_bottom = 26.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_8qguk")
 theme_override_font_sizes/font_size = 26

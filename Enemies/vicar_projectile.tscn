@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dbkg3r5mo4oxi"]
+
+[ext_resource type="Script" uid="uid://dgpy4kbfu52jb" path="res://Enemies/VicarProjectile.gd" id="1_8343o"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_7227s"]
+radius = 0.12
+height = 0.24
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7227s"]
+radius = 0.12
+
+[node name="VicarProjectile" type="RigidBody3D" unique_id=1842967886]
+transform = Transform3D(2.81, 0, 0, 0, 2.81, 0, 0, 0, 2.81, 0, 0, 0)
+script = ExtResource("1_8343o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=865156935]
+mesh = SubResource("SphereMesh_7227s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=218038601]
+shape = SubResource("SphereShape3D_7227s")

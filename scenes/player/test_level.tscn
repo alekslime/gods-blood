@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://brrfftrnv42ls" path="res://Medkit.tscn" id="12_0ajne"]
 [ext_resource type="PackedScene" uid="uid://1a5brlttxmhf" path="res://MusicManager.tscn" id="14_fixga"]
 [ext_resource type="Shader" uid="uid://cfsunswhajpkq" path="res://scenes/player/test_level.gdshader" id="15_e14y5"]
+[ext_resource type="PackedScene" uid="uid://dpd2ur7mc21pd" path="res://Enemies/the_vicar.tscn" id="15_kdquw"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_nweu1"]
 vertices = PackedVector3Array(-24.5, 1, -24.5, -24.5, 1, 24.5, 24.5, 1, 24.5, 24.5, 1, -24.5)
@@ -205,3 +206,6 @@ grow_vertical = 2
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -60.968945, 77.89316, -104.70288)
 material_override = SubResource("StandardMaterial3D_fixga")
 mesh = SubResource("SphereMesh_e14y5")
+
+[node name="TheVicar" parent="." unique_id=1440458563 instance=ExtResource("15_kdquw")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -51.71913, 7.414157, 0)

@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
 # --- STATS ---
-@export var max_health: float = 60.0
-@export var move_speed: float = 3.5
-@export var attack_damage: float = 12.0
-@export var preferred_range: float = 14.0
+@export var max_health: float = 65.0
+@export var move_speed: float = 3.2
+@export var attack_damage: float = 14.0
+@export var preferred_range: float = 12.0
 @export var min_range: float = 6.0
 @export var max_range: float = 22.0
 @export var projectile_speed: float = 16.0
@@ -12,8 +12,8 @@ extends CharacterBody3D
 # --- BURST FIRE ---
 @export var burst_count: int = 3
 @export var burst_interval: float = 0.18
-@export var burst_cooldown: float = 2.4
-@export var windup_duration: float = 0.7
+@export var burst_cooldown: float = 2.8
+@export var windup_duration: float = 1.4  # long chant telegraph — readable, fits lore
 
 var burst_timer := 0.0
 var burst_cooldown_timer := 0.0
@@ -35,8 +35,6 @@ var dodge_direction := Vector3.ZERO
 var current_health: float
 var player: CharacterBody3D = null
 var is_dead: bool = false
-
-
 
 # --- HIT FLASH ---
 var flash_timer := 0.0
@@ -77,9 +75,8 @@ enum State { IDLE, REPOSITION, RETREAT, ATTACK, DEAD }
 var state: State = State.IDLE
 
 
-
 func _ready() -> void:
-	add_to_group("enemy")
+	add_to_group("enemies")
 	current_health = max_health
 	player = get_tree().get_first_node_in_group("player")
 	burst_cooldown_timer = randf_range(0.3, burst_cooldown)
@@ -91,9 +88,10 @@ func _ready() -> void:
 	flash_material.emission = Color(1, 0, 0)
 	flash_material.emission_energy_multiplier = 2.0
 	windup_material = StandardMaterial3D.new()
-	windup_material.albedo_color = Color(1.0, 0.3, 0.0)
+	windup_material.albedo_color = Color(0.9, 0.7, 0.1)
 	windup_material.emission_enabled = true
-	windup_material.emission = Color(1.0, 0.3, 0.0)
+	# Corrupt gold glow during chant — matches palette
+	windup_material.emission = Color(0.94, 0.75, 0.03)
 	windup_material.emission_energy_multiplier = 0.0
 
 
@@ -276,14 +274,15 @@ func _handle_windup_glow(delta: float) -> void:
 		return
 	var pulse = sin(windup_glow * PI * 6.0) * 0.15 + windup_glow
 	pulse = clamp(pulse, 0.0, 1.0)
-	windup_material.emission = Color(1.0, lerp(0.3, 1.0, pulse), 0.0)
+	# Corrupt gold chant glow — matches palette
+	windup_material.emission = Color(0.94, lerp(0.3, 0.75, pulse), 0.03)
 	windup_material.emission_energy_multiplier = lerp(1.0, 8.0, pulse)
-	windup_material.albedo_color = Color(1.0, lerp(0.2, 1.0, pulse), lerp(0.0, 0.8, pulse))
+	windup_material.albedo_color = Color(lerp(0.6, 0.94, pulse), lerp(0.4, 0.75, pulse), 0.03)
 
 
 func _fire_projectile() -> void:
 	if projectile_scene == null:
-		push_warning("RangedEnemy: projectile_scene not assigned!")
+		push_warning("CorruptedClergy: projectile_scene not assigned!")
 		return
 	var proj = projectile_scene.instantiate()
 	get_tree().current_scene.add_child(proj)
@@ -334,23 +333,12 @@ func die() -> void:
 	death_sound.play()
 	GameManager.register_kill()
 	if player:
-		player.add_rage(25.0)
+		player.add_rage(20.0)
+	# Collapse slowly — per lore
+	await get_tree().create_timer(1.2).timeout
 	_spawn_death_particles()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.6).timeout
 	queue_free()
-
-
-func _try_drop_health() -> void:
-	if health_pickup_scene == null:
-		return
-	GameManager.health_drop_toggle = !GameManager.health_drop_toggle
-	if not GameManager.health_drop_toggle:
-		return
-	var drop_size = 1 if randf() < 0.2 else 0
-	var pickup = health_pickup_scene.instantiate()
-	pickup.setup(drop_size, global_position)
-	get_tree().current_scene.add_child(pickup)
-	pickup.drop_from(global_position)
 
 
 func _spawn_death_particles() -> void:
@@ -360,21 +348,21 @@ func _spawn_death_particles() -> void:
 	var material = ParticleProcessMaterial.new()
 	material.direction = Vector3(0, 1, 0)
 	material.spread = 60.0
-	material.initial_velocity_min = 3.0
-	material.initial_velocity_max = 8.0
-	material.gravity = Vector3(0, -9.8, 0)
+	material.initial_velocity_min = 1.0
+	material.initial_velocity_max = 4.0  # slower collapse than other enemies
+	material.gravity = Vector3(0, -4.0, 0)
 	material.scale_min = 0.1
 	material.scale_max = 0.3
-	material.color = Color(0.8, 0.1, 0.1)
+	material.color = Color(0.94, 0.75, 0.03)  # corrupt gold decay
 	var mesh_ref = SphereMesh.new()
 	mesh_ref.radius = 0.05
 	mesh_ref.height = 0.1
 	particles.process_material = material
 	particles.draw_pass_1 = mesh_ref
 	particles.amount = 24
-	particles.lifetime = 0.8
+	particles.lifetime = 1.4
 	particles.one_shot = true
-	particles.explosiveness = 0.9
+	particles.explosiveness = 0.7  # less explosive, more of a slow crumble
 	particles.emitting = true
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(1.8).timeout
 	particles.queue_free()

@@ -1,19 +1,20 @@
 extends CharacterBody3D
 
 # --- STATS ---
-@export var max_health: float = 100.0
-@export var move_speed: float = 4.5
-@export var attack_damage: float = 10.0
+@export var max_health: float = 280.0
+@export var move_speed: float = 4.2
+@export var attack_damage: float = 35.0
 @export var attack_range: float = 1.5
-@export var chase_range: float = 20.0
+@export var chase_range: float = 30.0
+
+# --- KNOCKBACK RESISTANCE ---
+const KNOCKBACK_RESISTANCE := 0.85
 
 # --- STATE ---
 var current_health: float
 var player: CharacterBody3D = null
 var is_dead: bool = false
 var can_attack: bool = true
-
-
 
 # --- HIT FLASH ---
 var flash_timer := 0.0
@@ -22,17 +23,16 @@ var original_material: Material = null
 var flash_material: StandardMaterial3D = null
 
 # --- STAGGER ---
+# Demons don't stagger — they just don't stop
 var stagger_timer := 0.0
-const STAGGER_DURATION := 0.3
-const STAGGER_THRESHOLD := 15.0
+const STAGGER_DURATION := 0.0
+const STAGGER_THRESHOLD := 999.0
 var damage_accumulator := 0.0
 var is_staggered := false
-
 
 # --- NODES ---
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var attack_timer: Timer = $AttackTimer
-@onready var hitbox: Area3D = $HitBox
 @onready var mesh: MeshInstance3D = $Ch36_nonPBR/Skeleton3D/Ch36
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 @onready var death_sound: AudioStreamPlayer = $DeathSound
@@ -47,15 +47,14 @@ var state: State = State.IDLE
 
 func _ready() -> void:
 	anim.play("idle")
-	add_to_group("enemy")
+	add_to_group("enemies")
 	current_health = max_health
 	player = get_tree().get_first_node_in_group("player")
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
 	attack_timer.start()
-
 	original_material = mesh.get_active_material(0)
 	flash_material = StandardMaterial3D.new()
-	flash_material.albedo_color = Color(1, 0.1, 0.1)
+	flash_material.albedo_color = Color(0.8, 0.0, 0.0)
 	flash_material.emission_enabled = true
 	flash_material.emission = Color(1, 0, 0)
 	flash_material.emission_energy_multiplier = 2.0
@@ -65,22 +64,11 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 	_handle_gravity(delta)
-	_handle_stagger(delta)
-	if not is_staggered:
-		_update_state()
-		_handle_state(delta)
+	# Demons don't stagger — skip stagger handling
+	_update_state()
+	_handle_state(delta)
 	_handle_flash(delta)
 	move_and_slide()
-
-
-func _handle_stagger(delta: float) -> void:
-	if is_staggered:
-		stagger_timer -= delta
-		var away = (global_position - player.global_position).normalized()
-		velocity.x = away.x * 6.0
-		velocity.z = away.z * 6.0
-		if stagger_timer <= 0:
-			is_staggered = false
 
 
 func _handle_gravity(delta: float) -> void:
@@ -98,7 +86,8 @@ func _update_state() -> void:
 	elif dist <= chase_range:
 		state = State.CHASE
 	else:
-		state = State.IDLE
+		# Demons never fully idle — they always know where you are
+		state = State.CHASE
 
 
 func _handle_state(delta: float) -> void:
@@ -137,12 +126,9 @@ func _on_attack_timer_timeout() -> void:
 func take_damage(amount: float) -> void:
 	if is_dead:
 		return
-	current_health -= amount
-	damage_accumulator += amount
-	if damage_accumulator >= STAGGER_THRESHOLD:
-		damage_accumulator = 0.0
-		is_staggered = true
-		stagger_timer = STAGGER_DURATION
+	# Apply knockback resistance — Demons barely flinch
+	var resisted = amount * (1.0 - KNOCKBACK_RESISTANCE)
+	current_health -= amount  # full damage, just no stagger
 	_flash_hit()
 	hit_sound.play()
 	if current_health <= 0:
@@ -166,23 +152,10 @@ func die() -> void:
 	queue_free()
 
 
-func _try_drop_health() -> void:
-	if health_pickup_scene == null:
-		return
-	GameManager.health_drop_toggle = !GameManager.health_drop_toggle
-	if not GameManager.health_drop_toggle:
-		return
-	var drop_size = 1 if randf() < 0.2 else 0   # 20% medium, 80% small
-	var pickup = health_pickup_scene.instantiate()
-	pickup.setup(drop_size, global_position)
-	get_tree().current_scene.add_child(pickup)
-
-
 func _spawn_death_particles() -> void:
 	var particles = GPUParticles3D.new()
 	get_parent().add_child(particles)
 	particles.global_position = global_position + Vector3(0, 0.9, 0)
-
 	var material = ParticleProcessMaterial.new()
 	material.direction = Vector3(0, 1, 0)
 	material.spread = 60.0
@@ -192,11 +165,9 @@ func _spawn_death_particles() -> void:
 	material.scale_min = 0.1
 	material.scale_max = 0.3
 	material.color = Color(0.8, 0.1, 0.1)
-
 	var mesh_ref = SphereMesh.new()
 	mesh_ref.radius = 0.05
 	mesh_ref.height = 0.1
-
 	particles.process_material = material
 	particles.draw_pass_1 = mesh_ref
 	particles.amount = 24
@@ -204,7 +175,6 @@ func _spawn_death_particles() -> void:
 	particles.one_shot = true
 	particles.explosiveness = 0.9
 	particles.emitting = true
-
 	await get_tree().create_timer(1.2).timeout
 	particles.queue_free()
 
