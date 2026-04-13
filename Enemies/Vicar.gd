@@ -20,6 +20,7 @@ const PHASE3_THRESHOLD = 0.30  # 30% HP → Phase 3
 @onready var projectile_spawn: Marker3D = $ProjectileSpawn
 @onready var decay_particles: GPUParticles3D = $DecayParticles
 @onready var vicar_voice: AudioStreamPlayer = $VicarVoice
+@onready var vicar_mesh: MeshInstance3D = $MeshInstance3D
 
 # --- PLAYER REF ---
 var player: CharacterBody3D = null
@@ -87,18 +88,32 @@ func _start_phase(phase: Phase) -> void:
 	current_phase = phase
 	match phase:
 		Phase.SERMON:
-			# Arrogant, slow, deliberate
 			decay_particles.emitting = false
+			# Phase 1 — cold, arrogant, barely glowing
+			_set_vicar_color(Color(0.55, 0.05, 0.05), 1.0)
+
 		Phase.DOUBT:
-			# Cracking — emit particles, speed up
 			decay_particles.emitting = true
 			decay_particles.amount = 24
-			charge_cooldown = 2.0  # short delay before first charge
+			charge_cooldown = 2.0
 			summon_cooldown = 4.0
+			# Phase 2 — brighter, cracking, gold bleeds in
+			_set_vicar_color(Color(0.7, 0.3, 0.0), 3.0)
+
 		Phase.DISSOLUTION:
-			# Coming apart — particles heavy, desperate
 			decay_particles.amount = 64
 			decay_particles.lifetime = 1.8
+			# Phase 3 — almost white, falling apart
+			_set_vicar_color(Color(0.9, 0.8, 0.6), 6.0)
+
+
+func _set_vicar_color(emission: Color, energy: float) -> void:
+	var mat = StandardMaterial3D.new()
+	mat.albedo_color = emission
+	mat.emission_enabled = true
+	mat.emission = emission
+	mat.emission_energy_multiplier = energy
+	vicar_mesh.set_surface_override_material(0, mat)
 
 
 func _check_phase_transition() -> void:
@@ -113,14 +128,28 @@ func _transition_to(phase: Phase) -> void:
 	transition_locked = true
 	velocity = Vector3.ZERO
 
-	# Brief freeze — weight of the moment
-	Engine.time_scale = 0.15
-	await get_tree().create_timer(0.3).timeout
+	# Screen shake — player feels it
+	if player and player.has_method("shake"):
+		player.shake(0.2)
+
+	# Vicar flashes white — something is breaking inside him
+	var flash_mat = StandardMaterial3D.new()
+	flash_mat.albedo_color = Color(1, 1, 1)
+	flash_mat.emission_enabled = true
+	flash_mat.emission = Color(1, 1, 1)
+	flash_mat.emission_energy_multiplier = 6.0
+	flash_mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	vicar_mesh.set_surface_override_material(0, flash_mat)
+
+	# Time slow — weight of the moment
+	Engine.time_scale = 0.1
+	await get_tree().create_timer(0.25).timeout
 	Engine.time_scale = 1.0
 
-	_start_phase(phase)
+	# Restore mesh
+	vicar_mesh.set_surface_override_material(0, null)
 
-	# Iframes during transition so player can't cheese the phase
+	_start_phase(phase)
 	await get_tree().create_timer(1.2).timeout
 	transition_locked = false
 
@@ -210,11 +239,16 @@ func _phase_dissolution(delta: float) -> void:
 func _move_toward_player(speed: float, delta: float) -> void:
 	if not player or is_charging:
 		return
-	nav_agent.target_position = player.global_position
-	var next = nav_agent.get_next_path_position()
-	var dir = (next - global_position).normalized()
-	velocity.x = dir.x * speed
-	velocity.z = dir.z * speed
+	# Direct chase — no nav agent fighting the velocity
+	var dir = (player.global_position - global_position)
+	dir.y = 0
+	if dir.length() > 0.5:
+		dir = dir.normalized()
+		velocity.x = lerp(velocity.x, dir.x * speed, 0.15)
+		velocity.z = lerp(velocity.z, dir.z * speed, 0.15)
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
 
 
 func _face_player(delta: float) -> void:
