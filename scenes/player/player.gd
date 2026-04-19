@@ -393,6 +393,9 @@ func take_damage(amount: float) -> void:
 		return
 	current_health -= amount
 	shake(0.06)
+	if weapon_manager and weapon_manager.current_weapon:
+		if weapon_manager.current_weapon.has_method("on_player_damaged"):
+			weapon_manager.current_weapon.on_player_damaged()
 	if hit_sound and not hit_sound.playing:
 		hit_sound.pitch_scale = randf_range(0.9, 1.1)
 		hit_sound.play()
@@ -447,6 +450,9 @@ func _handle_landing_bob(delta: float) -> void:
 	if was_in_air and on_floor:
 		land_bob_timer = LAND_BOB_DURATION
 		shake(0.02)
+		if weapon_manager and weapon_manager.current_weapon:
+			if weapon_manager.current_weapon.has_method("on_player_land"):
+				weapon_manager.current_weapon.on_player_land(1.0)
 	was_in_air = not on_floor
 	if land_bob_timer > 0:
 		land_bob_timer -= delta

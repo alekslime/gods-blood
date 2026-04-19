@@ -86,3 +86,18 @@ func _spawn_hit_effect(pos: Vector3) -> void:
 	particles.emitting = true
 	await get_tree().create_timer(0.6).timeout
 	particles.queue_free()
+
+# ── Called from player when taking damage ─────────────────────────────────────
+func on_player_damaged() -> void:
+	if animator: animator.trigger_damage()
+
+# ── Called from player on landing ─────────────────────────────────────────────
+func on_player_land(intensity: float = 1.0) -> void:
+	if animator: animator.trigger_land(intensity)
+
+# ── Called when ammo hits zero ────────────────────────────────────────────────
+func on_ammo_empty() -> void:
+	if animator: animator.set_empty(true)
+
+func on_reload_complete() -> void:
+	if animator: animator.set_empty(false)
