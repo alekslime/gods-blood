@@ -28,11 +28,6 @@ func _ready() -> void:
 	current_health = max_health
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
-	nav_agent.path_desired_distance = 0.5
-	nav_agent.target_desired_distance = 0.5
-	# Wait one frame for NavigationServer to sync before pathing
-	await get_tree().process_frame
-	nav_agent.target_position = player.global_position
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -47,13 +42,7 @@ func _physics_process(delta: float) -> void:
 func _update_navigation() -> void:
 	if not player:
 		return
-	nav_agent.target_position = player.global_position
-	if nav_agent.is_navigation_finished():
-		velocity.x = 0
-		velocity.z = 0
-		return
-	var next = nav_agent.get_next_path_position()
-	var dir = (next - global_position).normalized()
+	var dir = (player.global_position - global_position).normalized()
 	velocity.x = dir.x * move_speed
 	velocity.z = dir.z * move_speed
 

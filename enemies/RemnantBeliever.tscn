@@ -29,8 +29,6 @@ mesh = SubResource("CapsuleMesh_h04s0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=566304089]
 shape = SubResource("CapsuleShape3D_r1xb2")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=114851027]
-
 [node name="AttackArea" type="Area3D" parent="." unique_id=172844631]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=264215532]
