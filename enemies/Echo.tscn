@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://1lj3jb270nl1"]
+
+[ext_resource type="Script" uid="uid://d4jgb2vol5ybp" path="res://enemies/echo.gd" id="1_r1xb2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h04s0"]
+emission = Color(0.56757206, 1, 0.12315822, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_h04s0"]
+material = SubResource("StandardMaterial3D_h04s0")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r1xb2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h04s0"]
+size = Vector3(18.57, 10.685, 17.77)
+
+[node name="Echo" type="CharacterBody3D" unique_id=598788183]
+script = ExtResource("1_r1xb2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1654287988]
+mesh = SubResource("CapsuleMesh_h04s0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=566304089]
+shape = SubResource("CapsuleShape3D_r1xb2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=114851027]
+
+[node name="AttackArea" type="Area3D" parent="." unique_id=172844631]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=264215532]
+shape = SubResource("BoxShape3D_h04s0")
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="." unique_id=584722622]
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="." unique_id=1278431873]

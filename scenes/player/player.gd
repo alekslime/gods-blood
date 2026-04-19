@@ -475,12 +475,9 @@ func _handle_footsteps(delta: float) -> void:
 
 
 func add_rage(amount: float) -> void:
-	if is_raging:
-		return
 	rage = min(rage + amount, 100.0)
 	if hud:
 		hud.update_rage(rage)
-
 
 
 func _activate_rage() -> void:
