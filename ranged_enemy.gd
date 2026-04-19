@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # --- STATS ---
 @export var max_health: float = 65.0
-@export var move_speed: float = 3.2
+@export var move_speed: float = 15
 @export var attack_damage: float = 14.0
 @export var preferred_range: float = 12.0
 @export var min_range: float = 6.0

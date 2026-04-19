@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bwe15l2nimykx"]
+
+[ext_resource type="PackedScene" uid="uid://datd6p4guw0ht" path="res://assets/gun/rgm-40_gl.glb" id="1_c43ws"]
+[ext_resource type="Script" uid="uid://beyllghitln6g" path="res://weapons/hollow_round.gd" id="1_rep6q"]
+[ext_resource type="Script" uid="uid://btrlgcfrjt20h" path="res://weapons/weapon_animator.gd" id="3_ikdoj"]
+
+[node name="HollowRound" type="Node3D" unique_id=1481437668]
+script = ExtResource("1_rep6q")
+
+[node name="FirePoint" type="Node3D" parent="." unique_id=1730178447]
+
+[node name="FireTimer" type="Timer" parent="." unique_id=821082799]
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1846692335]
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="." unique_id=1828999921]
+
+[node name="ReloadSound" type="AudioStreamPlayer3D" parent="." unique_id=1711768350]
+
+[node name="EmptySound" type="AudioStreamPlayer3D" parent="." unique_id=180564238]
+
+[node name="Sketchfab_Scene" parent="." unique_id=824532558 instance=ExtResource("1_c43ws")]
+
+[node name="WeaponAnimator" type="Node" parent="." unique_id=605905632 node_paths=PackedStringArray("weapon_mesh")]
+script = ExtResource("3_ikdoj")
+weapon_mesh = NodePath("../Sketchfab_Scene")

@@ -1,12 +1,12 @@
 extends BaseWeapon
 
 @export var range: float = 200.0
-@export var bullet_trace_scene: PackedScene  # assign BulletTrace.tscn in inspector
+@export var bullet_trace_scene: PackedScene
 
 var muzzle_flash = null
-var animation_player = null
 var fire_sound: AudioStreamPlayer3D = null
 var fire_point: Node3D = null
+var animator = null
 
 func _ready() -> void:
 	weapon_name = "The Remnant"
@@ -15,39 +15,33 @@ func _ready() -> void:
 	magazine_size = 6
 	reload_time = 2.2
 	super()
-	if has_node("FirePoint"):
-		fire_point = $FirePoint
-	if has_node("FirePoint/MuzzleFlash"):
-		muzzle_flash = $FirePoint/MuzzleFlash
-	if has_node("AnimationPlayer"):
-		animation_player = $AnimationPlayer
-	if has_node("FireSound"):
-		fire_sound = $FireSound
+	if has_node("FirePoint"): fire_point = $FirePoint
+	if has_node("FirePoint/MuzzleFlash"): muzzle_flash = $FirePoint/MuzzleFlash
+	if has_node("FireSound"): fire_sound = $FireSound
+	if has_node("WeaponAnimator"): animator = $WeaponAnimator
+	# Connect reload signal to animator
+	on_reload_start.connect(func(): if animator: animator.remnant_reload())
+	# Equip animation on ready
+	if animator: animator.remnant_equip()
 
 func _fire() -> void:
 	current_ammo -= 1
 	can_fire = false
 	fire_timer.start()
 	do_shake(0.18)
-
-	# ── Sound ─────────────────────────────────────────────────────────────────
+	if animator: animator.remnant_fire()
 	if fire_sound:
 		fire_sound.pitch_scale = randf_range(0.95, 1.05)
 		fire_sound.play()
-
-	# ── Hitscan from camera ───────────────────────────────────────────────────
 	var cam = get_camera()
 	if cam:
 		var forward = -cam.global_transform.basis.z
 		var from = cam.global_position
 		var to = from + forward * range
-
-		# Bullet trace — from barrel, aimed forward
 		if bullet_trace_scene and fire_point:
 			var trace = bullet_trace_scene.instantiate()
 			get_tree().current_scene.add_child(trace)
 			trace.setup(fire_point.global_position, forward)
-
 		var space = cam.get_world_3d().direct_space_state
 		var query = PhysicsRayQueryParameters3D.create(from, to)
 		query.exclude = [get_tree().get_first_node_in_group("player")]
@@ -59,18 +53,11 @@ func _fire() -> void:
 				hit.take_damage(calculate_damage())
 				do_shake(0.28)
 			_spawn_hit_effect(hit_pos)
-
 	if muzzle_flash:
 		muzzle_flash.restart()
 		muzzle_flash.emitting = true
-
-	if animation_player and animation_player.has_animation("fire"):
-		animation_player.stop()
-		animation_player.play("fire")
-
 	ammo_changed.emit(current_ammo, magazine_size)
 	on_fire.emit()
-
 	if current_ammo <= 0:
 		on_empty.emit()
 

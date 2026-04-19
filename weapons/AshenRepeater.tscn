@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b2lc06jplyc6n" path="res://weapons/ashen_repeater.gd" id="1_li6ao"]
 [ext_resource type="PackedScene" uid="uid://n84a6rvs0fai" path="res://assets/gun/mac10.glb" id="2_njsra"]
 [ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://BulletTrace.tscn" id="2_r355n"]
+[ext_resource type="Script" uid="uid://btrlgcfrjt20h" path="res://weapons/weapon_animator.gd" id="4_8yj60"]
 
 [node name="AshenRepeater" type="Node3D" unique_id=1769328427]
 script = ExtResource("1_li6ao")
@@ -20,3 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03180746, 0.16353518)
 [node name="Sketchfab_Scene" parent="." unique_id=213167878 instance=ExtResource("2_njsra")]
 
 [node name="FireSound" type="AudioStreamPlayer3D" parent="." unique_id=524668471]
+
+[node name="WeaponAnimator" type="Node" parent="." unique_id=481762334 node_paths=PackedStringArray("weapon_mesh")]
+script = ExtResource("4_8yj60")
+weapon_mesh = NodePath("../Sketchfab_Scene")

@@ -2,13 +2,14 @@ extends CharacterBody3D
 
 # --- STATS ---
 @export var max_health: float = 280.0
-@export var move_speed: float = 4.2
+@export var move_speed: float = 15
 @export var attack_damage: float = 35.0
 @export var attack_range: float = 1.5
 @export var chase_range: float = 30.0
 
 # --- KNOCKBACK RESISTANCE ---
 const KNOCKBACK_RESISTANCE := 0.85
+
 
 # --- STATE ---
 var current_health: float

@@ -2,9 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c5a1ipw7wu8fw" path="res://weapons/the_grief.gd" id="1_slfk7"]
 [ext_resource type="PackedScene" uid="uid://dmg3qadyguxpw" path="res://assets/gun/apex_legends_peacekeeper_shotgun.glb" id="2_6xnwa"]
+[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://BulletTrace.tscn" id="2_euayn"]
+[ext_resource type="Script" uid="uid://btrlgcfrjt20h" path="res://weapons/weapon_animator.gd" id="4_1kyf7"]
 
 [node name="TheGrief" type="Node3D" unique_id=173919637]
 script = ExtResource("1_slfk7")
+bullet_trace_scene = ExtResource("2_euayn")
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1822149571]
 
@@ -18,3 +21,12 @@ script = ExtResource("1_slfk7")
 
 [node name="Sketchfab_Scene" parent="." unique_id=324355118 instance=ExtResource("2_6xnwa")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="FirePoint" type="Node3D" parent="." unique_id=735846766]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75735193, 2.0665812)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2004884612]
+
+[node name="WeaponAnimator" type="Node" parent="." unique_id=785863105 node_paths=PackedStringArray("weapon_mesh")]
+script = ExtResource("4_1kyf7")
+weapon_mesh = NodePath("../Sketchfab_Scene")

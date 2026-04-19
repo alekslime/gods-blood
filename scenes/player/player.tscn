@@ -9,7 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://c1jy3g2ejdng4" path="res://assets/sounds/scream rage.mp3" id="6_0owmy"]
 [ext_resource type="Script" uid="uid://clp50rn201ga1" path="res://scenes/player/melee_system.gd" id="6_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://bgntb5pydi8e0" path="res://weapons/TheGrief.tscn" id="6_ugbui"]
+[ext_resource type="PackedScene" uid="uid://bwe15l2nimykx" path="res://weapons/HollowRound.tscn" id="7_fcs02"]
 [ext_resource type="AudioStream" uid="uid://ddjj5qf40h2dn" path="res://assets/sounds/heavy breathing.mp3" id="7_qek5x"]
+[ext_resource type="PackedScene" uid="uid://d1rli67t08upl" path="res://weapons/HollowRoundProjectile.tscn" id="8_myrg7"]
 [ext_resource type="AudioStream" uid="uid://3wo65aecbkbu" path="res://assets/sounds/enemy_hit.mp3" id="10_h17s1"]
 [ext_resource type="AudioStream" uid="uid://i7ki6lnrffo3" path="res://assets/sounds/enemy_death.mp3" id="11_je7p5"]
 [ext_resource type="AudioStream" uid="uid://delob7wi3xj4" path="res://assets/sounds/dash.mp3" id="12_fm80t"]
@@ -29,6 +31,7 @@ shape = SubResource("CapsuleShape3D_x7p2l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1286173871]
+fov = 68.1
 
 [node name="Hand" type="Node3D" parent="Head/Camera3D" unique_id=893320645]
 script = ExtResource("2_qek5x")
@@ -47,6 +50,10 @@ transform = Transform3D(-2.45, 0, 2.141858e-07, 0, 2.45, 0, -2.141858e-07, 0, -2
 
 [node name="TheGrief" parent="Head/Camera3D/WeaponHolder" unique_id=173919637 instance=ExtResource("6_ugbui")]
 transform = Transform3D(-0.34934717, 0, 0.021366982, 0, 0.35, 0, -0.021366982, 0, -0.34934717, 0.19, -0.09, 0.16)
+
+[node name="HollowRound" parent="Head/Camera3D/WeaponHolder" unique_id=1481437668 instance=ExtResource("7_fcs02")]
+transform = Transform3D(0.15659901, -1.1147724, 1.3788253, 0.41834447, 1.3683431, 1.0587846, -1.7230393, 0.23090972, 0.38238207, 0.17, 0.135, 0)
+projectile_scene = ExtResource("8_myrg7")
 
 [node name="MeleeSystem" type="Node3D" parent="Head/Camera3D" unique_id=733479838]
 script = ExtResource("6_5gtgg")

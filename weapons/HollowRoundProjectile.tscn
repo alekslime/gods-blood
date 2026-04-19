@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d1rli67t08upl"]
+
+[ext_resource type="Script" uid="uid://b156nsh30wgv2" path="res://weapons/hollow_round_projectile.gd" id="1_ne6i5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffx1h"]
+shading_mode = 0
+albedo_color = Color(0.1332047, 0.00016771161, 0.36720526, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ne6i5"]
+material = SubResource("StandardMaterial3D_ffx1h")
+radius = 0.12
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13w8n"]
+shading_mode = 0
+albedo_color = Color(0.095496304, 0.0001150325, 0.26619542, 1)
+
+[node name="HollowRoundProjectile" type="Node3D" unique_id=1049349001]
+script = ExtResource("1_ne6i5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=990436555]
+mesh = SubResource("SphereMesh_ne6i5")
+surface_material_override/0 = SubResource("StandardMaterial3D_13w8n")
