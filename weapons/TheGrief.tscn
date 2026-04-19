@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bgntb5pydi8e0"]
+
+[ext_resource type="Script" uid="uid://c5a1ipw7wu8fw" path="res://weapons/the_grief.gd" id="1_slfk7"]
+[ext_resource type="PackedScene" uid="uid://dmg3qadyguxpw" path="res://assets/gun/apex_legends_peacekeeper_shotgun.glb" id="2_6xnwa"]
+
+[node name="TheGrief" type="Node3D" unique_id=173919637]
+script = ExtResource("1_slfk7")
+
+[node name="FireTimer" type="Timer" parent="." unique_id=1822149571]
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=266123119]
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="." unique_id=426088958]
+
+[node name="ReloadSound" type="AudioStreamPlayer3D" parent="." unique_id=1068563177]
+
+[node name="EmptySound" type="AudioStreamPlayer3D" parent="." unique_id=354464607]
+
+[node name="Sketchfab_Scene" parent="." unique_id=324355118 instance=ExtResource("2_6xnwa")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

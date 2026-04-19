@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://xlyfvhdpk1pn" path="res://assets/sounds/footstep.mp3" id="5_p47bc"]
 [ext_resource type="AudioStream" uid="uid://c1jy3g2ejdng4" path="res://assets/sounds/scream rage.mp3" id="6_0owmy"]
 [ext_resource type="Script" uid="uid://clp50rn201ga1" path="res://scenes/player/melee_system.gd" id="6_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://bgntb5pydi8e0" path="res://weapons/TheGrief.tscn" id="6_ugbui"]
 [ext_resource type="AudioStream" uid="uid://ddjj5qf40h2dn" path="res://assets/sounds/heavy breathing.mp3" id="7_qek5x"]
 [ext_resource type="AudioStream" uid="uid://3wo65aecbkbu" path="res://assets/sounds/enemy_hit.mp3" id="10_h17s1"]
 [ext_resource type="AudioStream" uid="uid://i7ki6lnrffo3" path="res://assets/sounds/enemy_death.mp3" id="11_je7p5"]
@@ -44,8 +45,10 @@ transform = Transform3D(-0.035, 0, -3.059797e-09, 0, 0.035, 0, 3.059797e-09, 0, 
 [node name="AshenRepeater" parent="Head/Camera3D/WeaponHolder" unique_id=1769328427 instance=ExtResource("5_gx1jg")]
 transform = Transform3D(-2.45, 0, 2.141858e-07, 0, 2.45, 0, -2.141858e-07, 0, -2.45, 0.185, 0.16, 0.35)
 
+[node name="TheGrief" parent="Head/Camera3D/WeaponHolder" unique_id=173919637 instance=ExtResource("6_ugbui")]
+transform = Transform3D(-0.34934717, 0, 0.021366982, 0, 0.35, 0, -0.021366982, 0, -0.34934717, 0.19, -0.09, 0.16)
+
 [node name="MeleeSystem" type="Node3D" parent="Head/Camera3D" unique_id=733479838]
-visible = false
 script = ExtResource("6_5gtgg")
 
 [node name="FootstepSound" type="AudioStreamPlayer" parent="." unique_id=1564946405]
