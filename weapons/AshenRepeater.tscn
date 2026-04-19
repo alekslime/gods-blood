@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bn8lrbm8rxg3p"]
+
+[ext_resource type="Script" uid="uid://b2lc06jplyc6n" path="res://weapons/ashen_repeater.gd" id="1_li6ao"]
+[ext_resource type="PackedScene" uid="uid://n84a6rvs0fai" path="res://assets/gun/mac10.glb" id="2_njsra"]
+
+[node name="AshenRepeater" type="Node3D" unique_id=1769328427]
+script = ExtResource("1_li6ao")
+
+[node name="FireTimer" type="Timer" parent="." unique_id=636177818]
+
+[node name="ReloadTimer" type="Timer" parent="." unique_id=1460278999]
+
+[node name="FirePoint" type="Node3D" parent="." unique_id=1163877456]
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="FirePoint" unique_id=1583507709]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1517555865]
+
+[node name="Sketchfab_Scene" parent="." unique_id=213167878 instance=ExtResource("2_njsra")]
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="." unique_id=524668471]

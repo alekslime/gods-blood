@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://xmk7wcsn2lhq" path="res://weapons/weapon_manager.gd" id="2_gmlin"]
 [ext_resource type="Script" uid="uid://bulh0sgaqys3g" path="res://scenes/player/player_hand.gd" id="2_qek5x"]
 [ext_resource type="PackedScene" uid="uid://dmyd428tmd48h" path="res://weapons/Remnant.tscn" id="4_fm80t"]
-[ext_resource type="PackedScene" uid="uid://k40gagjg1roj" path="res://weapons/RemnantProjectile.tscn" id="5_gx1jg"]
+[ext_resource type="PackedScene" uid="uid://bn8lrbm8rxg3p" path="res://weapons/AshenRepeater.tscn" id="5_gx1jg"]
 [ext_resource type="AudioStream" uid="uid://xlyfvhdpk1pn" path="res://assets/sounds/footstep.mp3" id="5_p47bc"]
 [ext_resource type="AudioStream" uid="uid://c1jy3g2ejdng4" path="res://assets/sounds/scream rage.mp3" id="6_0owmy"]
 [ext_resource type="Script" uid="uid://clp50rn201ga1" path="res://scenes/player/melee_system.gd" id="6_5gtgg"]
@@ -40,9 +40,12 @@ script = ExtResource("2_gmlin")
 
 [node name="Remnant" parent="Head/Camera3D/WeaponHolder" unique_id=79001301 instance=ExtResource("4_fm80t")]
 transform = Transform3D(-0.035, 0, -3.059797e-09, 0, 0.035, 0, 3.059797e-09, 0, -0.035, 0.525, -0.1, -0.655)
-projectile_scene = ExtResource("5_gx1jg")
+
+[node name="AshenRepeater" parent="Head/Camera3D/WeaponHolder" unique_id=1769328427 instance=ExtResource("5_gx1jg")]
+transform = Transform3D(-2.45, 0, 2.141858e-07, 0, 2.45, 0, -2.141858e-07, 0, -2.45, 0.185, 0.16, 0.35)
 
 [node name="MeleeSystem" type="Node3D" parent="Head/Camera3D" unique_id=733479838]
+visible = false
 script = ExtResource("6_5gtgg")
 
 [node name="FootstepSound" type="AudioStreamPlayer" parent="." unique_id=1564946405]

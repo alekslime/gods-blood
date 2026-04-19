@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://blenit6xr3wp6"]
+
+[ext_resource type="Script" uid="uid://blbf3dsw43evv" path="res://bullet_trace.gd" id="1_q6of3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ceoee"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.95281494, 0.9058309, 0.7977378, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q6of3"]
+size = Vector3(0.02, 0.02, 1.2)
+
+[node name="BulletTrace" type="Node3D" unique_id=1190194467]
+script = ExtResource("1_q6of3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1870066618]
+material_override = SubResource("StandardMaterial3D_ceoee")
+mesh = SubResource("BoxMesh_q6of3")
