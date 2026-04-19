@@ -6,6 +6,7 @@ extends BaseWeapon
 var muzzle_flash = null
 var animation_player = null
 var fire_sound: AudioStreamPlayer3D = null
+var fire_point: Node3D = null
 
 func _ready() -> void:
 	weapon_name = "The Remnant"
@@ -14,6 +15,8 @@ func _ready() -> void:
 	magazine_size = 6
 	reload_time = 2.2
 	super()
+	if has_node("FirePoint"):
+		fire_point = $FirePoint
 	if has_node("FirePoint/MuzzleFlash"):
 		muzzle_flash = $FirePoint/MuzzleFlash
 	if has_node("AnimationPlayer"):
@@ -39,11 +42,11 @@ func _fire() -> void:
 		var from = cam.global_position
 		var to = from + forward * range
 
-		# Bullet trace
-		if bullet_trace_scene:
+		# Bullet trace — from barrel, aimed forward
+		if bullet_trace_scene and fire_point:
 			var trace = bullet_trace_scene.instantiate()
 			get_tree().current_scene.add_child(trace)
-			trace.setup(from, forward)
+			trace.setup(fire_point.global_position, forward)
 
 		var space = cam.get_world_3d().direct_space_state
 		var query = PhysicsRayQueryParameters3D.create(from, to)

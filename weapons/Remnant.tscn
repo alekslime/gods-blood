@@ -1,16 +1,23 @@
 [gd_scene format=3 uid="uid://dmyd428tmd48h"]
 
 [ext_resource type="Script" uid="uid://bfa402r6wimju" path="res://weapons/remnant.gd" id="1_53dqc"]
+[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://BulletTrace.tscn" id="2_my7me"]
 [ext_resource type="PackedScene" uid="uid://cshh7rcfl4qe" path="res://assets/gun/heavy_revolver_concept.glb" id="2_v7avc"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_my7me"]
 
 [node name="Remnant" type="Node3D" unique_id=79001301]
 script = ExtResource("1_53dqc")
+bullet_trace_scene = ExtResource("2_my7me")
 
 [node name="Sketchfab_Scene" parent="." unique_id=1848214949 instance=ExtResource("2_v7avc")]
 
 [node name="FirePoint" type="Node3D" parent="." unique_id=1989877710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055908978, 6.732785, 22.54773)
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="FirePoint" unique_id=1728026916]
+visibility_aabb = AABB(-1.0559089, -7.732785, -23.54773, 2, 2, 2)
+draw_pass_1 = SubResource("SphereMesh_my7me")
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1076593880]
 

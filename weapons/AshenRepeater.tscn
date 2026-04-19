@@ -2,17 +2,18 @@
 
 [ext_resource type="Script" uid="uid://b2lc06jplyc6n" path="res://weapons/ashen_repeater.gd" id="1_li6ao"]
 [ext_resource type="PackedScene" uid="uid://n84a6rvs0fai" path="res://assets/gun/mac10.glb" id="2_njsra"]
+[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://BulletTrace.tscn" id="2_r355n"]
 
 [node name="AshenRepeater" type="Node3D" unique_id=1769328427]
 script = ExtResource("1_li6ao")
+bullet_trace_scene = ExtResource("2_r355n")
 
 [node name="FireTimer" type="Timer" parent="." unique_id=636177818]
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=1460278999]
 
 [node name="FirePoint" type="Node3D" parent="." unique_id=1163877456]
-
-[node name="MuzzleFlash" type="GPUParticles3D" parent="FirePoint" unique_id=1583507709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03180746, 0.16353518)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1517555865]
 
