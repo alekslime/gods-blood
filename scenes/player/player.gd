@@ -151,9 +151,6 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if is_dead and event.is_action_pressed("ui_accept"):
-		_restart()
-		return
 	if is_dead:
 		return
 	if event is InputEventMouseMotion:

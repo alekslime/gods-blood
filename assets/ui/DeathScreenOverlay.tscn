@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://qbux8phgwvb4"]
+
+[ext_resource type="Script" uid="uid://b5vm5nix6ccma" path="res://shaders/death_screen_overlay.gd" id="1_oqewd"]
+
+[node name="DeathScreenOverlay" type="CanvasLayer" unique_id=2101101841 groups=["death_overlay"]]
+script = ExtResource("1_oqewd")

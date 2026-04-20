@@ -171,7 +171,10 @@ func update_ammo(current: int, maximum: int, infinite: bool) -> void:
 
 
 func show_death_screen() -> void:
-	death_screen.visible = true
+	death_screen.visible = false  # disable the old plain rect
+	var overlay = get_tree().get_first_node_in_group("death_overlay")
+	if overlay:
+		overlay.show_death()
 
 func update_rage(value: float) -> void:
 	# Fill bar: scale width left to right based on rage 0→100

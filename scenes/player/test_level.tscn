@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://1lj3jb270nl1" path="res://enemies/Echo.tscn" id="18_4v5r2"]
 [ext_resource type="PackedScene" uid="uid://bvdw5wp0ebksk" path="res://enemies/TheBound.tscn" id="19_fydxc"]
 [ext_resource type="PackedScene" uid="uid://djetk5lq8x13l" path="res://enemies/RemnantBeliever.tscn" id="20_cddy5"]
+[ext_resource type="PackedScene" uid="uid://qbux8phgwvb4" path="res://assets/ui/DeathScreenOverlay.tscn" id="21_cddy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdquw"]
 shader = ExtResource("15_e14y5")
@@ -306,3 +307,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.142971, 10.588425, 248.77
 
 [node name="RemnantBeliever4" parent="enemies" unique_id=912693877 instance=ExtResource("20_cddy5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.142971, 10.588425, 248.77182)
+
+[node name="DeathScreenOverlay" parent="." unique_id=2101101841 instance=ExtResource("21_cddy5")]
