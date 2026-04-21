@@ -25,8 +25,6 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 [node name="FirePoint" type="Node3D" parent="." unique_id=735846766]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75735193, 2.0665812)
 
-[node name="MuzzleFlash" type="GPUParticles3D" parent="FirePoint" unique_id=85506464]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2004884612]
 
 [node name="WeaponAnimator" type="Node" parent="." unique_id=785863105 node_paths=PackedStringArray("weapon_mesh")]

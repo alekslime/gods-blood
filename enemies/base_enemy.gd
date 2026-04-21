@@ -71,11 +71,14 @@ func die() -> void:
 	if is_dead:
 		return
 	is_dead = true
+	# ULTRAKILL kill freeze
+	Engine.time_scale = 0.05
+	await get_tree().create_timer(0.06 * 0.05).timeout
+	Engine.time_scale = 1.0
 	if gives_rage and player and player.has_method("add_rage"):
 		player.add_rage(rage_on_kill)
 	if death_sound:
 		death_sound.play()
-	# Disable collision so corpse doesn't block
 	$CollisionShape3D.set_deferred("disabled", true)
 	await get_tree().create_timer(0.6).timeout
 	queue_free()

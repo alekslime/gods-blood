@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d1qbb6g1gc2iq" path="res://ui/rage_frame.png" id="3_8qguk"]
 [ext_resource type="FontFile" uid="uid://dv6s86xayt4rq" path="res://assets/font/DeadSecretary.ttf" id="4_8qguk"]
 
-[node name="HUD" type="CanvasLayer" unique_id=464664150 groups=["hud"]]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=464664150 groups=["hud"]]
 
 [node name="HUDRoot" type="Control" parent="." unique_id=1758529509]
 layout_mode = 3
@@ -79,6 +79,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
+
+[node name="DesaturationOverlay" type="ColorRect" parent="HUDRoot" unique_id=1641648955]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DamageVignette" type="ColorRect" parent="HUDRoot" unique_id=720453885]
 visible = false
