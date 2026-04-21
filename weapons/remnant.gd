@@ -39,16 +39,12 @@ func _fire() -> void:
 	current_ammo -= 1
 	can_fire = false
 	fire_timer.start()
-	# Cock sound after shot
-	if cock_sound:
-		await get_tree().create_timer(0.25).timeout
-		cock_sound.pitch_scale = randf_range(0.95, 1.05)
-		cock_sound.play()
 	do_shake(1.00)
 	if animator: animator.remnant_fire()
 	if fire_sound:
 		fire_sound.pitch_scale = randf_range(0.95, 1.05)
 		fire_sound.play()
+	_play_cock_delayed()
 	var cam = get_camera()
 	if cam:
 		var forward = -cam.global_transform.basis.z
@@ -77,6 +73,12 @@ func _fire() -> void:
 	if current_ammo <= 0:
 		on_empty.emit()
 
+func _play_cock_delayed() -> void:
+	await get_tree().create_timer(0.25).timeout
+	if cock_sound:
+		cock_sound.pitch_scale = randf_range(0.95, 1.05)
+		cock_sound.play()
+
 func _spawn_hit_effect(pos: Vector3) -> void:
 	var particles = GPUParticles3D.new()
 	get_tree().current_scene.add_child(particles)
@@ -103,15 +105,12 @@ func _spawn_hit_effect(pos: Vector3) -> void:
 	await get_tree().create_timer(0.6).timeout
 	particles.queue_free()
 
-# ── Called from player when taking damage ─────────────────────────────────────
 func on_player_damaged() -> void:
 	if animator: animator.trigger_damage()
 
-# ── Called from player on landing ─────────────────────────────────────────────
 func on_player_land(intensity: float = 1.0) -> void:
 	if animator: animator.trigger_land(intensity)
 
-# ── Called when ammo hits zero ────────────────────────────────────────────────
 func on_ammo_empty() -> void:
 	if animator: animator.set_empty(true)
 

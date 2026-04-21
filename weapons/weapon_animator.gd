@@ -198,15 +198,26 @@ func remnant_fire() -> void:
 	_kill_tween()
 	current_tween = get_tree().create_tween()
 	current_tween.set_parallel(false)
+	# Instant violent kick — all 3 axes
 	current_tween.tween_property(weapon_mesh, "position",
-		origin_pos + Vector3(0.0, 0.018, 0.06), 0.04).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		origin_pos + Vector3(randf_range(-0.02, 0.02), 0.06, -0.12), 0.01)\
+		.set_trans(Tween.TRANS_LINEAR)
 	current_tween.tween_property(weapon_mesh, "rotation",
-		origin_rot + Vector3(deg_to_rad(-7.0), deg_to_rad(1.5), 0.0), 0.04).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+		origin_rot + Vector3(deg_to_rad(-22.0), deg_to_rad(randf_range(-6.0, 6.0)), deg_to_rad(randf_range(-5.0, 5.0))), 0.01)\
+		.set_trans(Tween.TRANS_LINEAR)
+	# Overshoot — dips past origin
 	current_tween.tween_property(weapon_mesh, "position",
-		origin_pos, 0.28).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		origin_pos + Vector3(0.0, -0.018, 0.04), 0.1)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 	current_tween.tween_property(weapon_mesh, "rotation",
-		origin_rot, 0.28).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-
+		origin_rot + Vector3(deg_to_rad(8.0), 0.0, 0.0), 0.1)\
+		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	# Return home
+	current_tween.tween_property(weapon_mesh, "position",
+		origin_pos, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	current_tween.tween_property(weapon_mesh, "rotation",
+		origin_rot, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+		
 func remnant_reload() -> void:
 	_kill_tween()
 	is_reloading = true

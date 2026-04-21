@@ -21,6 +21,10 @@ GoreManager="*uid://drl3sa6yg26h8"
 GameManager="*uid://d1pe3m27f3dq6"
 MusicManager="*uid://mg51uwyev8rj"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/mode=3
