@@ -7,9 +7,6 @@ extends BaseWeapon
 @export var bullet_trace_scene: PackedScene
 
 var muzzle_flash = null
-var fire_sound: AudioStreamPlayer3D = null
-var reload_sound: AudioStreamPlayer3D = null
-var empty_sound: AudioStreamPlayer3D = null
 var fire_point: Node3D = null
 var animator = null
 

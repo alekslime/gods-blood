@@ -116,7 +116,7 @@ grow_vertical = 2
 visible = false
 
 [node name="Player" parent="." unique_id=2004408079 instance=ExtResource("1_ddwea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.697763, 5.816125, 421.4503)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.697763, 5.816125, 325.09967)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1956567446]
 

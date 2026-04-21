@@ -4,7 +4,6 @@ extends BaseWeapon
 @export var bullet_trace_scene: PackedScene
 
 var muzzle_flash = null
-var fire_sound: AudioStreamPlayer3D = null
 var fire_point: Node3D = null
 var animator = null
 
@@ -15,20 +14,29 @@ func _ready() -> void:
 	magazine_size = 6
 	reload_time = 2.2
 	super()
+	# Assign nodes FIRST
 	if has_node("FirePoint"): fire_point = $FirePoint
 	if has_node("FirePoint/MuzzleFlash"): muzzle_flash = $FirePoint/MuzzleFlash
 	if has_node("FireSound"): fire_sound = $FireSound
+	if has_node("ReloadSound"): reload_sound = $ReloadSound
+	if has_node("EmptySound"): empty_sound = $EmptySound
 	if has_node("WeaponAnimator"): animator = $WeaponAnimator
-	# Connect reload signal to animator
+	# Load streams AFTER
+	if fire_sound:
+		fire_sound.stream = load("res://assets/audio/weapons/revolver_shot.mp3")
+	if reload_sound:
+		reload_sound.stream = load("res://assets/audio/weapons/revolver_cock.mp3")
+	if empty_sound:
+		empty_sound.stream = load("res://assets/audio/weapons/gun_empty_click.mp3")
+	# Signals
 	on_reload_start.connect(func(): if animator: animator.remnant_reload())
-	# Equip animation on ready
 	if animator: animator.remnant_equip()
 
 func _fire() -> void:
 	current_ammo -= 1
 	can_fire = false
 	fire_timer.start()
-	do_shake(0.18)
+	do_shake(1.00)
 	if animator: animator.remnant_fire()
 	if fire_sound:
 		fire_sound.pitch_scale = randf_range(0.95, 1.05)

@@ -3,9 +3,6 @@ extends BaseWeapon
 @export var projectile_scene: PackedScene
 @export var projectile_speed: float = 25.0
 
-var fire_sound: AudioStreamPlayer3D = null
-var reload_sound: AudioStreamPlayer3D = null
-var empty_sound: AudioStreamPlayer3D = null
 var fire_point: Node3D = null
 var animator = null
 

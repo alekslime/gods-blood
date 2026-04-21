@@ -13,7 +13,6 @@ const SHAKE_MAX: float = 0.14
 var fire_held_timer: float = 0.0
 
 var muzzle_flash = null
-var fire_sound: AudioStreamPlayer3D = null
 var fire_point: Node3D = null
 var animator = null
 
