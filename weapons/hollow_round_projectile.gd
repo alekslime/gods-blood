@@ -74,6 +74,16 @@ func _implode() -> void:
 			body.velocity += pull_dir * pull_force
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
+	# Play explosion sound at implosion point
+	var explosion_audio = AudioStreamPlayer3D.new()
+	get_tree().current_scene.add_child(explosion_audio)
+	explosion_audio.global_position = global_position
+	explosion_audio.stream = load("res://assets/audio/weapons/explosion.mp3")
+	explosion_audio.pitch_scale = randf_range(1.4, 1.6)
+	explosion_audio.volume_db = -18.0
+	explosion_audio.play()
+	await get_tree().create_timer(1.0).timeout
+	explosion_audio.queue_free()
 
 	_spawn_implosion_effect()
 	queue_free()

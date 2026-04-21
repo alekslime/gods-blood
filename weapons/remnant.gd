@@ -14,28 +14,36 @@ func _ready() -> void:
 	magazine_size = 6
 	reload_time = 2.2
 	super()
-	# Assign nodes FIRST
 	if has_node("FirePoint"): fire_point = $FirePoint
 	if has_node("FirePoint/MuzzleFlash"): muzzle_flash = $FirePoint/MuzzleFlash
 	if has_node("FireSound"): fire_sound = $FireSound
 	if has_node("ReloadSound"): reload_sound = $ReloadSound
+	if has_node("CockSound"): cock_sound = $CockSound
 	if has_node("EmptySound"): empty_sound = $EmptySound
 	if has_node("WeaponAnimator"): animator = $WeaponAnimator
-	# Load streams AFTER
 	if fire_sound:
-		fire_sound.stream = load("res://assets/audio/weapons/revolver_shot.mp3")
+		fire_sound.stream = load("res://assets/audio/weapons/shotgun_shot.mp3")
 	if reload_sound:
-		reload_sound.stream = load("res://assets/audio/weapons/revolver_cock.mp3")
+		reload_sound.stream = load("res://assets/audio/weapons/reload.mp3")
+	if cock_sound:
+		cock_sound.stream = load("res://assets/audio/weapons/shotgun_pump.mp3")
 	if empty_sound:
 		empty_sound.stream = load("res://assets/audio/weapons/gun_empty_click.mp3")
-	# Signals
-	on_reload_start.connect(func(): if animator: animator.remnant_reload())
+	on_reload_start.connect(func():
+		if reload_sound: reload_sound.play()
+		if animator: animator.remnant_reload()
+	)
 	if animator: animator.remnant_equip()
 
 func _fire() -> void:
 	current_ammo -= 1
 	can_fire = false
 	fire_timer.start()
+	# Cock sound after shot
+	if cock_sound:
+		await get_tree().create_timer(0.25).timeout
+		cock_sound.pitch_scale = randf_range(0.95, 1.05)
+		cock_sound.play()
 	do_shake(1.00)
 	if animator: animator.remnant_fire()
 	if fire_sound:

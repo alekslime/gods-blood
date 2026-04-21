@@ -32,6 +32,8 @@ draw_pass_1 = SubResource("SphereMesh_my7me")
 
 [node name="EmptySound" type="AudioStreamPlayer3D" parent="." unique_id=1747101561]
 
+[node name="CockSound" type="AudioStreamPlayer3D" parent="." unique_id=1870406806]
+
 [node name="WeaponAnimator" type="Node" parent="." unique_id=1332415077 node_paths=PackedStringArray("weapon_mesh")]
 script = ExtResource("4_gu1ob")
 weapon_mesh = NodePath("../Sketchfab_Scene")

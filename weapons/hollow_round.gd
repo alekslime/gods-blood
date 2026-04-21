@@ -3,6 +3,7 @@ extends BaseWeapon
 @export var projectile_scene: PackedScene
 @export var projectile_speed: float = 25.0
 
+var explosion_sound: AudioStreamPlayer3D = null
 var fire_point: Node3D = null
 var animator = null
 
@@ -13,20 +14,21 @@ func _ready() -> void:
 	magazine_size = 4
 	reload_time = 3.0
 	super()
-	# Nodes first
 	if has_node("FirePoint"): fire_point = $FirePoint
 	if has_node("FireSound"): fire_sound = $FireSound
 	if has_node("ReloadSound"): reload_sound = $ReloadSound
 	if has_node("EmptySound"): empty_sound = $EmptySound
 	if has_node("WeaponAnimator"): animator = $WeaponAnimator
-	# Streams after
 	if fire_sound:
 		fire_sound.stream = load("res://assets/audio/weapons/grenade_launcher_pop.mp3")
 	if reload_sound:
 		reload_sound.stream = load("res://assets/audio/weapons/reload.mp3")
 	if empty_sound:
 		empty_sound.stream = load("res://assets/audio/weapons/gun_empty_click.mp3")
-	on_reload_start.connect(func(): if animator: animator.hollow_reload())
+	on_reload_start.connect(func():
+		if reload_sound: reload_sound.play()
+		if animator: animator.hollow_reload()
+	)
 	if animator: animator.hollow_equip()
 
 func _fire() -> void:

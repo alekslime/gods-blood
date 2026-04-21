@@ -26,8 +26,19 @@ func _ready() -> void:
 	if has_node("FirePoint"): fire_point = $FirePoint
 	if has_node("FirePoint/MuzzleFlash"): muzzle_flash = $FirePoint/MuzzleFlash
 	if has_node("FireSound"): fire_sound = $FireSound
+	if has_node("ReloadSound"): reload_sound = $ReloadSound
+	if has_node("EmptySound"): empty_sound = $EmptySound
 	if has_node("WeaponAnimator"): animator = $WeaponAnimator
-	on_reload_start.connect(func(): if animator: animator.ashen_reload())
+	if fire_sound:
+		fire_sound.stream = load("res://assets/audio/weapons/smg_fire.mp3")
+	if reload_sound:
+		reload_sound.stream = load("res://assets/audio/weapons/reload.mp3")
+	if empty_sound:
+		empty_sound.stream = load("res://assets/audio/weapons/gun_empty_click.mp3")
+	on_reload_start.connect(func():
+		if reload_sound: reload_sound.play()
+		if animator: animator.ashen_reload()
+	)
 	if animator: animator.ashen_equip()
 
 func _process(delta: float) -> void:

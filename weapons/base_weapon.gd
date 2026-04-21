@@ -38,6 +38,7 @@ signal on_empty
 var fire_sound: AudioStreamPlayer3D = null
 var reload_sound: AudioStreamPlayer3D = null
 var empty_sound: AudioStreamPlayer3D = null
+var cock_sound: AudioStreamPlayer3D = null
 
 # ── Player reference for screen shake ─────────────────────────────────────────
 var player = null
