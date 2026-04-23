@@ -49,9 +49,9 @@ var fire_revenge_active := false
 var fire_revenge_timer := 0.0
 
 # --- SPEED SETTINGS ---
-const WALK_SPEED = 16.0
+const WALK_SPEED = 8.0
 const SPRINT_SPEED = 16.0
-const SLIDE_SPEED = 35.0
+const SLIDE_SPEED = 8.0
 const DASH_SPEED = 36.0
 const JUMP_VELOCITY = 10.5
 const GRAVITY = 25.0
