@@ -21,6 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03180746, 0.16353518)
 [node name="Sketchfab_Scene" parent="." unique_id=213167878 instance=ExtResource("2_njsra")]
 
 [node name="FireSound" type="AudioStreamPlayer3D" parent="." unique_id=524668471]
+volume_db = -35.897
 
 [node name="WeaponAnimator" type="Node" parent="." unique_id=481762334 node_paths=PackedStringArray("weapon_mesh")]
 script = ExtResource("4_8yj60")

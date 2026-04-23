@@ -23,10 +23,13 @@ func _ready() -> void:
 	if has_node("ReloadSound"): reload_sound = $ReloadSound
 	if has_node("EmptySound"): empty_sound = $EmptySound
 	if has_node("WeaponAnimator"): animator = $WeaponAnimator
+	if has_node("CockSound"): cock_sound = $CockSound
 	if fire_sound:
 		fire_sound.stream = load("res://assets/audio/weapons/shotgun_shot.mp3")
 	if reload_sound:
 		reload_sound.stream = load("res://assets/audio/weapons/reload.mp3")
+	if cock_sound:
+		cock_sound.stream = load("res://assets/audio/weapons/shotgun_pump.mp3")
 	if empty_sound:
 		empty_sound.stream = load("res://assets/audio/weapons/gun_empty_click.mp3")
 	on_reload_start.connect(func():
@@ -37,13 +40,14 @@ func _ready() -> void:
 
 func _fire() -> void:
 	current_ammo -= 1
-	can_fire = false
+	can_fire = false 
 	fire_timer.start()
 	do_shake(0.45)
 	if animator: animator.grief_fire()
 	if fire_sound:
 		fire_sound.pitch_scale = randf_range(0.93, 1.0)
 		fire_sound.play()
+		_play_cock_delayed()
 	var cam = get_camera()
 	if cam:
 		var space = cam.get_world_3d().direct_space_state
@@ -111,3 +115,9 @@ func _spawn_hit_effect(pos: Vector3) -> void:
 	particles.emitting = true
 	await get_tree().create_timer(0.7).timeout
 	particles.queue_free()
+
+func _play_cock_delayed() -> void:
+	await get_tree().create_timer(0.25).timeout
+	if cock_sound:
+		cock_sound.pitch_scale = randf_range(0.95, 1.05)
+		cock_sound.play()

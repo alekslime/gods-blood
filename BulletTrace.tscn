@@ -44,10 +44,11 @@ shading_mode = 0
 albedo_color = Color(0.85050595, 0.61138725, 0, 1)
 
 [node name="BulletTrace" type="Node3D" unique_id=1190194467]
+transform = Transform3D(1, 0, 0, 0, 0.99126625, -0.13187578, 0, 0.13187578, 0.99126625, 0, 0, 0)
 script = SubResource("GDScript_ceoee")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1870066618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06696761)
+transform = Transform3D(1, 0, 0, 0, 0.99026805, 0.1391731, 0, -0.1391731, 0.99026805, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_8thto")
 mesh = SubResource("BoxMesh_q6of3")
 surface_material_override/0 = SubResource("StandardMaterial3D_q6of3")

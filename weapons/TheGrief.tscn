@@ -19,6 +19,9 @@ bullet_trace_scene = ExtResource("2_euayn")
 
 [node name="EmptySound" type="AudioStreamPlayer3D" parent="." unique_id=354464607]
 
+[node name="CockSound" type="AudioStreamPlayer3D" parent="." unique_id=2143938616]
+volume_db = -21.538
+
 [node name="Sketchfab_Scene" parent="." unique_id=324355118 instance=ExtResource("2_6xnwa")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 

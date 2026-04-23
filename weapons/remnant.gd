@@ -26,7 +26,7 @@ func _ready() -> void:
 	if reload_sound:
 		reload_sound.stream = load("res://assets/audio/weapons/reload.mp3")
 	if cock_sound:
-		cock_sound.stream = load("res://assets/audio/weapons/shotgun_pump.mp3")
+		cock_sound.stream = load("res://assets/audio/weapons/revolver_cock.mp3")
 	if empty_sound:
 		empty_sound.stream = load("res://assets/audio/weapons/gun_empty_click.mp3")
 	on_reload_start.connect(func():
