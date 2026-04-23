@@ -1,0 +1,23 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://d37pa86n3rqn1"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_j3pel"]
+resource_name = "Reverb"
+room_size = 0.9
+damping = 0.3
+wet = 0.6
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_j3pel"]
+resource_name = "LowPassFilter"
+cutoff_hz = 3500.0
+
+[resource]
+bus/1/name = &"Mara"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_j3pel")
+bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectLowPassFilter_j3pel")
+bus/1/effect/1/enabled = true

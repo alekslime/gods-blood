@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bgucyvrgppxq"
+path="res://.godot/imported/they didnt scream.ogg-21bbd46a5e21861bd8e652590ca29484.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/mara/they didnt scream.ogg"
+dest_files=["res://.godot/imported/they didnt scream.ogg-21bbd46a5e21861bd8e652590ca29484.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
