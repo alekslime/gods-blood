@@ -6,6 +6,8 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dwyiq"]
 render_priority = 0
 shader = ExtResource("1_mc20k")
+shader_parameter/BaseColor = Color(0.31008, 0.34, 0.1156, 1)
+shader_parameter/GrassColor = Color(0.392157, 0.701961, 0.258824, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04oek"]
 

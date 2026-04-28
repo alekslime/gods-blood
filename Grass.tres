@@ -5,10 +5,49 @@ default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_cphlf"]
 
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ng3i6"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_cphlf"]
+output_port_for_preview = 1
+default_input_values = [0, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_ni58l"]
+function = 31
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_kt1u0"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_185ve"]
+parameter_name = "BaseColor"
+default_value_enabled = true
+default_value = Color(0.31008, 0.34, 0.11559999, 1)
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_1hgj1"]
+parameter_name = "GrassColor"
+default_value_enabled = true
+default_value = Color(0.39215687, 0.7019608, 0.25882354, 1)
+
 [resource]
 modes/cull = 2
+modes/diffuse = 3
+nodes/fragment/0/position = Vector2(400, 340)
 nodes/fragment/2/node = SubResource("VisualShaderNodeVectorCompose_ng3i6")
-nodes/fragment/2/position = Vector2(60, 480)
+nodes/fragment/2/position = Vector2(100, 540)
 nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_cphlf")
-nodes/fragment/3/position = Vector2(80, 260)
-nodes/fragment/connections = PackedInt32Array(2, 0, 0, 8, 2, 0, 0, 9, 3, 0, 0, 3)
+nodes/fragment/3/position = Vector2(100, 340)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_ng3i6")
+nodes/fragment/4/position = Vector2(-220, 40)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorDecompose_cphlf")
+nodes/fragment/5/position = Vector2(100, -100)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatFunc_ni58l")
+nodes/fragment/6/position = Vector2(320, -120)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_kt1u0")
+nodes/fragment/7/position = Vector2(600, -340)
+nodes/fragment/8/node = SubResource("VisualShaderNodeColorParameter_185ve")
+nodes/fragment/8/position = Vector2(220, -640)
+nodes/fragment/9/node = SubResource("VisualShaderNodeColorParameter_1hgj1")
+nodes/fragment/9/position = Vector2(220, -400)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 8, 2, 0, 0, 9, 3, 0, 0, 3, 4, 0, 5, 0, 5, 1, 6, 0, 6, 0, 7, 2, 7, 0, 0, 0, 8, 0, 7, 0, 9, 0, 7, 1)
