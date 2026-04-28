@@ -1,0 +1,14 @@
+[gd_resource type="VisualShader" format=3 uid="uid://beqwof417ca0u"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_ng3i6"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_cphlf"]
+
+[resource]
+modes/cull = 2
+nodes/fragment/2/node = SubResource("VisualShaderNodeVectorCompose_ng3i6")
+nodes/fragment/2/position = Vector2(60, 480)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatConstant_cphlf")
+nodes/fragment/3/position = Vector2(80, 260)
+nodes/fragment/connections = PackedInt32Array(2, 0, 0, 8, 2, 0, 0, 9, 3, 0, 0, 3)
