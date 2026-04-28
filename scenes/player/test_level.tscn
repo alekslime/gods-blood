@@ -27,6 +27,8 @@
 [ext_resource type="Script" uid="uid://btk1jeveetki7" path="res://scenes/player/mara_zone.gd" id="25_ota02"]
 [ext_resource type="AudioStream" uid="uid://7ey03odyetkj" path="res://assets/audio/mara/they came in the night.ogg" id="26_8yd48"]
 [ext_resource type="AudioStream" uid="uid://bgucyvrgppxq" path="res://assets/audio/mara/they didnt scream.ogg" id="26_rui7k"]
+[ext_resource type="PackedScene" uid="uid://bqty0xxlecre1" path="res://Level1.tscn" id="28_aa4jf"]
+[ext_resource type="PackedScene" uid="uid://dxwvi31n7ksfs" path="res://assets/house/house.glb" id="29_s3rs7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdquw"]
 shader = ExtResource("15_e14y5")
@@ -56,22 +58,25 @@ size = Vector3(161.88562, 1, 432.67297)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sti0t"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3rs7"]
+albedo_color = Color(0.44705883, 0.92156863, 0.22352941, 0.7137255)
+
 [sub_resource type="BoxMesh" id="BoxMesh_cddy5"]
+material = SubResource("StandardMaterial3D_s3rs7")
 
 [sub_resource type="Environment" id="Environment_opgfa"]
-ambient_light_source = 3
-ambient_light_color = Color(0.8, 0.2, 0, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0, 0.7921569, 1, 1)
 glow_enabled = true
 glow_intensity = 1.45
 glow_bloom = 0.33
 glow_blend_mode = 0
 glow_hdr_threshold = 0.5
 fog_enabled = true
-fog_light_color = Color(0.31151718, 0, 0.043014117, 1)
+fog_light_color = Color(0.0655078, 0.5399593, 0.7333009, 1)
 fog_light_energy = 0.56
-fog_sun_scatter = 1.0
+fog_sun_scatter = 0.13
 fog_density = 0.0068
-volumetric_fog_enabled = true
 volumetric_fog_emission_energy = 0.0
 volumetric_fog_length = 21.92
 
@@ -130,7 +135,7 @@ grow_vertical = 2
 visible = false
 
 [node name="Player" parent="." unique_id=2004408079 instance=ExtResource("1_ddwea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.668499, 3.5612183, 1084.1598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.01651, 3.5612183, 1084.1598)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1956567446]
 
@@ -203,11 +208,11 @@ directional_shadow_pancake_size = 0.0
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1669449041]
 transform = Transform3D(0.41873434, -0.90782845, -0.02255482, 0.78713727, 0.35045606, 0.5075383, -0.45285332, -0.23027748, 0.8613337, 0, 0, 0)
-light_color = Color(0.70975083, 0.28493494, 0, 1)
-light_energy = 1.427
+light_energy = 1.863
 light_indirect_energy = 4.2
 light_volumetric_fog_energy = 1.429
 light_specular = 0.0
+light_bake_mode = 1
 shadow_enabled = true
 shadow_blur = 0.667
 directional_shadow_mode = 0
@@ -8676,3 +8681,9 @@ shape = SubResource("BoxShape3D_at43v")
 [node name="Audio" type="AudioStreamPlayer" parent="MaraZone2" unique_id=1184113101]
 stream = ExtResource("26_rui7k")
 bus = &"Mara"
+
+[node name="Grass" parent="." unique_id=1858996503 instance=ExtResource("28_aa4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.040436, -0.26709986, 951.6331)
+
+[node name="house" parent="." unique_id=1798424865 instance=ExtResource("29_s3rs7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 150.83516, 2.519548, 971.6192)

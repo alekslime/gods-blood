@@ -1,0 +1,177 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dxwvi31n7ksfs"
+path="res://.godot/imported/house.glb-13c3dcc8fcf1eda9968da1e26132e38b.scn"
+
+[deps]
+
+source_file="res://assets/house/house.glb"
+dest_files=["res://.godot/imported/house.glb-13c3dcc8fcf1eda9968da1e26132e38b.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/root_script=null
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+nodes/import_as_skeleton_bones=false
+nodes/use_name_suffixes=true
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+materials/extract=0
+materials/extract_format=0
+materials/extract_path=""
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model_001/root_001/GLTF_SceneRootNode_001/Dooega House_001_0/Object_4": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model_001/root_001/GLTF_SceneRootNode_001/Dooega House_001_0/Object_5_001": {
+"generate/physics": true
+},
+"PATH:Stairs_003_92/Object_200": {
+"generate/physics": true
+},
+"PATH:Stairs_003_92/Object_201": {
+"generate/physics": true
+},
+"PATH:Window_001_98/Object_221": {
+"generate/physics": true
+},
+"PATH:Window_001_98/Object_222": {
+"generate/physics": true
+},
+"PATH:Window_001_98/Object_223": {
+"generate/physics": true
+},
+"PATH:Window_001_98/Object_224": {
+"generate/physics": true
+},
+"PATH:Window_002_99/Object_226": {
+"generate/physics": true
+},
+"PATH:Window_002_99/Object_227": {
+"generate/physics": true
+},
+"PATH:Window_003_100/Object_230": {
+"generate/physics": true
+},
+"PATH:Window_003_100/Object_231": {
+"generate/physics": true
+},
+"PATH:Window_003_100/Object_232": {
+"generate/physics": true
+},
+"PATH:Window_003_100/Object_233": {
+"generate/physics": true
+},
+"PATH:Window_006_101/Object_235": {
+"generate/physics": true
+},
+"PATH:Window_006_101/Object_236": {
+"generate/physics": true
+},
+"PATH:Window_006_101/Object_237": {
+"generate/physics": true
+},
+"PATH:Window_006_101/Object_238": {
+"generate/physics": true
+},
+"PATH:Window_007_102/Object_240": {
+"generate/physics": true
+},
+"PATH:Window_007_102/Object_241": {
+"generate/physics": true
+},
+"PATH:Window_007_102/Object_242": {
+"generate/physics": true
+},
+"PATH:Window_007_102/Object_243": {
+"generate/physics": true
+},
+"PATH:Window_008_103/Object_245": {
+"generate/physics": true
+},
+"PATH:Window_008_103/Object_246": {
+"generate/physics": true
+},
+"PATH:Window_008_103/Object_247": {
+"generate/physics": true
+},
+"PATH:Window_008_103/Object_248": {
+"generate/physics": true
+},
+"PATH:Window_009_104/Object_250": {
+"generate/physics": true
+},
+"PATH:Window_009_104/Object_251": {
+"generate/physics": true
+},
+"PATH:Window_009_104/Object_252": {
+"generate/physics": true
+},
+"PATH:Window_009_104/Object_253": {
+"generate/physics": true
+},
+"PATH:Window_010_105/Object_255": {
+"generate/physics": true
+},
+"PATH:Window_010_105/Object_256": {
+"generate/physics": true
+},
+"PATH:Window_010_105/Object_257": {
+"generate/physics": true
+},
+"PATH:Window_97/Object_217": {
+"generate/physics": true
+},
+"PATH:Window_97/Object_218": {
+"generate/physics": true
+},
+"PATH:Window_97/Object_219": {
+"generate/physics": true
+},
+"PATH:strop_93/Object_203": {
+"generate/physics": true
+},
+"PATH:walls_001_95/Object_210": {
+"generate/physics": true
+},
+"PATH:walls_001_95/Object_211": {
+"generate/physics": true
+},
+"PATH:walls_001_95/Object_212": {
+"generate/physics": true
+},
+"PATH:walls_001_95/Object_213": {
+"generate/physics": true
+},
+"PATH:walls_94/Object_206": {
+"generate/physics": true
+},
+"PATH:walls_94/Object_207": {
+"generate/physics": true
+},
+"PATH:walls_94/Object_208": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=2
+gltf/embedded_image_handling=1
