@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://bivc8k5aokon4" path="res://assets/env/tree2.glb" id="23_sti0t"]
 [ext_resource type="Texture2D" uid="uid://kt75fjh2bw81" path="res://assets/sigil/sigil.png" id="24_at43v"]
 [ext_resource type="Script" uid="uid://btk1jeveetki7" path="res://scenes/player/mara_zone.gd" id="25_ota02"]
+[ext_resource type="AudioStream" uid="uid://7ey03odyetkj" path="res://assets/audio/mara/they came in the night.ogg" id="26_8yd48"]
 [ext_resource type="AudioStream" uid="uid://bgucyvrgppxq" path="res://assets/audio/mara/they didnt scream.ogg" id="26_rui7k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdquw"]
@@ -34,8 +35,8 @@ shader_parameter/grain_scale = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4v5r2"]
 shader = ExtResource("15_aapoj")
-shader_parameter/resolution_x = 868
-shader_parameter/resolution_y = 894
+shader_parameter/resolution_x = 396
+shader_parameter/resolution_y = 396
 shader_parameter/color_bit_depth = 4
 shader_parameter/dither_strength = 0.0
 shader_parameter/jitter_amount = 0.001
@@ -89,11 +90,12 @@ radius = 1.0
 height = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_at43v"]
-size = Vector3(337.51837, 72.421936, 7.229553)
+size = Vector3(337.51837, 17.444366, 7.229553)
 
 [node name="TestLevel" type="Node3D" unique_id=1500266787]
 
 [node name="HUD" parent="." unique_id=464664150 instance=ExtResource("3_nweu1")]
+visible = false
 script = ExtResource("4_acnbp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=764981364]
@@ -201,7 +203,7 @@ directional_shadow_pancake_size = 0.0
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1669449041]
 transform = Transform3D(0.41873434, -0.90782845, -0.02255482, 0.78713727, 0.35045606, 0.5075383, -0.45285332, -0.23027748, 0.8613337, 0, 0, 0)
-light_color = Color(0.47968644, 0.07821233, 0, 1)
+light_color = Color(0.70975083, 0.28493494, 0, 1)
 light_energy = 1.427
 light_indirect_energy = 4.2
 light_volumetric_fog_energy = 1.429
@@ -8652,12 +8654,25 @@ upper_fade = 0.1
 lower_fade = 0.1
 
 [node name="MaraZone1" type="Area3D" parent="." unique_id=1461448507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65.3324)
 script = ExtResource("25_ota02")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MaraZone1" unique_id=631632740]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.77884, 35.710968, 999.2445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.77884, 8.222183, 999.2445)
 shape = SubResource("BoxShape3D_at43v")
 
 [node name="Audio" type="AudioStreamPlayer" parent="MaraZone1" unique_id=463315206]
+stream = ExtResource("26_8yd48")
+bus = &"Mara"
+
+[node name="MaraZone2" type="Area3D" parent="." unique_id=1954742857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.762451)
+script = ExtResource("25_ota02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MaraZone2" unique_id=1729975601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.77884, 9.969414, 999.2445)
+shape = SubResource("BoxShape3D_at43v")
+
+[node name="Audio" type="AudioStreamPlayer" parent="MaraZone2" unique_id=1184113101]
 stream = ExtResource("26_rui7k")
 bus = &"Mara"

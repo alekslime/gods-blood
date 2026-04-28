@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://7ey03odyetkj"
+path="res://.godot/imported/they came in the night.ogg-b58bfdda64f4f80e0d3d657660c605bb.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/mara/they came in the night.ogg"
+dest_files=["res://.godot/imported/they came in the night.ogg-b58bfdda64f4f80e0d3d657660c605bb.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

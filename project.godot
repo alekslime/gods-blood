@@ -15,6 +15,10 @@ run/main_scene="res://scenes/player/test_level.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://d37pa86n3rqn1"
+
 [autoload]
 
 GoreManager="*uid://drl3sa6yg26h8"
