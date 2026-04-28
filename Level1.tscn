@@ -2,6 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://beqwof417ca0u" path="res://Grass.tres" id="1_mc20k"]
 [ext_resource type="PackedScene" uid="uid://dcc8mtmxhjn6g" path="res://assets/grass/grass.glb" id="2_cove1"]
+[ext_resource type="PackedScene" uid="uid://bsy4kx5xs0j6l" path="res://scenes/player/player.tscn" id="3_cove1"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mc20k"]
 fractal_type = 0
@@ -60,6 +61,12 @@ albedo_color = Color(0.4627451, 0.79607844, 0.3019608, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_lmyl5"]
 size = Vector2(30, 30)
 
+[sub_resource type="Environment" id="Environment_cove1"]
+background_energy_multiplier = 16.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cove1"]
+size = Vector3(28.82074, 1, 58.38501)
+
 [node name="Grass" type="Node3D" unique_id=1858996503]
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=939129447]
@@ -72,5 +79,17 @@ material_override = SubResource("StandardMaterial3D_dn5ey")
 mesh = SubResource("PlaneMesh_lmyl5")
 
 [node name="grass" parent="." unique_id=975040649 instance=ExtResource("2_cove1")]
+
+[node name="Player" parent="." unique_id=2004408079 instance=ExtResource("3_cove1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.07093, 13.865858)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=281318553]
+environment = SubResource("Environment_cove1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1119183187]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1063025219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50064087, 0, -13.526978)
+shape = SubResource("BoxShape3D_cove1")
 
 [editable path="grass"]
