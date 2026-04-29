@@ -39,6 +39,54 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
+"PATH:Cube_001_0/Object_5": {
+"generate/physics": true
+},
+"PATH:Cube_004_1/Object_7": {
+"generate/physics": true
+},
+"PATH:Cube_005_2/Object_9": {
+"generate/physics": true
+},
+"PATH:Cube_012_3/Object_11": {
+"generate/physics": true
+},
+"PATH:DoorFrame_23": {
+"import/skip_import": true
+},
+"PATH:Door_016_22": {
+"import/skip_import": true
+},
+"PATH:Handle_Back_016_54": {
+"import/skip_import": true
+},
+"PATH:Handle_Front_016_70": {
+"import/skip_import": true
+},
+"PATH:Handle_Front_016_70/Object_147": {
+"generate/physics": true
+},
+"PATH:Plane_001_72/Object_151": {
+"generate/physics": true
+},
+"PATH:Plane_002_73/Object_153": {
+"generate/physics": true
+},
+"PATH:Plane_003_74/Object_155": {
+"generate/physics": true
+},
+"PATH:Plane_004_75/Object_157": {
+"generate/physics": true
+},
+"PATH:Plane_005_76/Object_159": {
+"generate/physics": true
+},
+"PATH:Plane_007_78/Object_163": {
+"generate/physics": true
+},
+"PATH:Plane_71/Object_149": {
+"generate/physics": true
+},
 "PATH:Sketchfab_model_001/root_001/GLTF_SceneRootNode_001/Dooega House_001_0/Object_4": {
 "generate/physics": true
 },

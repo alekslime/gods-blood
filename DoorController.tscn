@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b1rg435musikf"]
+
+[ext_resource type="Script" uid="uid://buwfmn2hw1nqf" path="res://door_controller.gd" id="1_0okxm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0okxm"]
+size = Vector3(1.1966858, 1.7827148, 1.763794)
+
+[node name="DoorController" type="Node3D" unique_id=886908276]
+script = ExtResource("1_0okxm")
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=829998844]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=735605927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045913696, 0.39135742, 0.38189697)
+shape = SubResource("BoxShape3D_0okxm")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1880377378]
