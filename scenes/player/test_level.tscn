@@ -17,6 +17,7 @@
 [ext_resource type="Shader" uid="uid://cfsunswhajpkq" path="res://scenes/player/test_level.gdshader" id="15_e14y5"]
 [ext_resource type="PackedScene" uid="uid://dpd2ur7mc21pd" path="res://Enemies/the_vicar.tscn" id="15_kdquw"]
 [ext_resource type="PackedScene" uid="uid://dt1pceq6yhijb" path="res://assets/chapel/low-poly_church.glb" id="16_kdquw"]
+[ext_resource type="Texture2D" uid="uid://btsnqjp5kr0hy" path="res://grass/8b33c068332df34a0725f3d89d033dc5-2878760242.jpg" id="17_wnmek"]
 [ext_resource type="PackedScene" uid="uid://1lj3jb270nl1" path="res://enemies/Echo.tscn" id="18_4v5r2"]
 [ext_resource type="PackedScene" uid="uid://bvdw5wp0ebksk" path="res://enemies/TheBound.tscn" id="19_fydxc"]
 [ext_resource type="PackedScene" uid="uid://djetk5lq8x13l" path="res://enemies/RemnantBeliever.tscn" id="20_cddy5"]
@@ -26,9 +27,10 @@
 [ext_resource type="AudioStream" uid="uid://7ey03odyetkj" path="res://assets/audio/mara/they came in the night.ogg" id="26_8yd48"]
 [ext_resource type="AudioStream" uid="uid://bgucyvrgppxq" path="res://assets/audio/mara/they didnt scream.ogg" id="26_rui7k"]
 [ext_resource type="PackedScene" uid="uid://bqty0xxlecre1" path="res://Level1.tscn" id="28_aa4jf"]
-[ext_resource type="PackedScene" uid="uid://ccm6g8s4qr4ta" path="res://environment.tscn" id="30_77k2j"]
+[ext_resource type="PackedScene" uid="uid://ccm6g8s4qr4ta" path="res://scenes/tree foliage.tscn" id="30_77k2j"]
 [ext_resource type="PackedScene" uid="uid://b1rg435musikf" path="res://door/DoorController.tscn" id="31_t0ar4"]
 [ext_resource type="PackedScene" uid="uid://k60sfbhvduh5" path="res://door/DoorAnimatable.tscn" id="31_wnmek"]
+[ext_resource type="Environment" uid="uid://c7ryv36kk50e3" path="res://environment.tres" id="31_wo3vv"]
 [ext_resource type="PackedScene" uid="uid://cf3jr3e0ibn54" path="res://scenes/player/DoorFrame.tscn" id="32_wo3vv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdquw"]
@@ -56,14 +58,13 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 [sub_resource type="BoxShape3D" id="BoxShape3D_e14y5"]
 size = Vector3(161.88562, 1, 343.29266)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sti0t"]
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wnmek"]
+albedo_color = Color(0.20906562, 0.20906562, 0.050708726, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3rs7"]
-albedo_color = Color(0.44705883, 0.92156863, 0.22352941, 0.7137255)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wo3vv"]
+albedo_texture = ExtResource("17_wnmek")
 
 [sub_resource type="BoxMesh" id="BoxMesh_cddy5"]
-material = SubResource("StandardMaterial3D_s3rs7")
 
 [sub_resource type="BoxMesh" id="BoxMesh_lj68t"]
 
@@ -83,6 +84,8 @@ height = 2.0
 size = Vector3(337.51837, 17.444366, 7.229553)
 
 [node name="TestLevel" type="Node3D" unique_id=1500266787]
+
+[node name="MusicManager" parent="." unique_id=634783044 instance=ExtResource("14_fixga")]
 
 [node name="HUD" parent="." unique_id=464664150 instance=ExtResource("3_nweu1")]
 visible = false
@@ -119,7 +122,7 @@ grow_vertical = 2
 visible = false
 
 [node name="Player" parent="." unique_id=2004408079 instance=ExtResource("1_ddwea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.313782, 3.5612183, 1074.3772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.73086, 3.5612335, 957.33075)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1956567446]
 
@@ -176,6 +179,44 @@ health_pickup_scene = ExtResource("11_uoxps")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.407917, 8.022303, 7.621666)
 health_pickup_scene = ExtResource("11_uoxps")
 
+[node name="newEnemies" type="Node3D" parent="Enemies" unique_id=110525854]
+
+[node name="Echo" parent="Enemies/newEnemies" unique_id=598788183 instance=ExtResource("18_4v5r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.02939, 4.4314704, 225.05371)
+
+[node name="Echo2" parent="Enemies/newEnemies" unique_id=1147390314 instance=ExtResource("18_4v5r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.15712, 4.4314704, 236.08908)
+
+[node name="Echo3" parent="Enemies/newEnemies" unique_id=1095760177 instance=ExtResource("18_4v5r2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.839188, 4.431474, 243.15865)
+
+[node name="TheBound" parent="Enemies/newEnemies" unique_id=1429322609 instance=ExtResource("19_fydxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.589687, 4.3643723, 218.88678)
+
+[node name="TheBound2" parent="Enemies/newEnemies" unique_id=1168037819 instance=ExtResource("19_fydxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.09268, 4.3643723, 236.09007)
+
+[node name="TheBound3" parent="Enemies/newEnemies" unique_id=457527652 instance=ExtResource("19_fydxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.09268, 4.3643723, 231.09007)
+
+[node name="TheBound4" parent="Enemies/newEnemies" unique_id=1684558740 instance=ExtResource("19_fydxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2196026, 4.3643723, 220.1357)
+
+[node name="RemnantBeliever" parent="Enemies/newEnemies" unique_id=918495341 instance=ExtResource("20_cddy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 10.5884285, 230)
+
+[node name="RemnantBeliever2" parent="Enemies/newEnemies" unique_id=260303250 instance=ExtResource("20_cddy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.656765, 10.5884285, 225.65639)
+
+[node name="RemnantBeliever3" parent="Enemies/newEnemies" unique_id=2122340508 instance=ExtResource("20_cddy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.142971, 10.588425, 248.77182)
+
+[node name="RemnantBeliever4" parent="Enemies/newEnemies" unique_id=912693877 instance=ExtResource("20_cddy5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.142971, 10.588425, 248.77182)
+
+[node name="TheVicar" parent="Enemies" unique_id=1440458563 instance=ExtResource("15_kdquw")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -51.71913, 7.414157, 0)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1462321222]
 navigation_mesh = SubResource("NavigationMesh_nweu1")
 
@@ -191,33 +232,32 @@ shape = SubResource("BoxShape3D_e14y5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" unique_id=648941909]
 transform = Transform3D(159.40503, 0, 0, 0, 2.8, 0, 0, 0, 271.27695, 13.217134, 1.2521782, 214.746)
-material_override = SubResource("StandardMaterial3D_sti0t")
+material_override = SubResource("StandardMaterial3D_wnmek")
+material_overlay = SubResource("StandardMaterial3D_wo3vv")
 mesh = SubResource("BoxMesh_cddy5")
 
 [node name="LevelManager" type="Node" parent="." unique_id=1797066187 node_paths=PackedStringArray("door")]
 script = ExtResource("6_lj68t")
-door = NodePath("../Door")
+door = NodePath("LevelEnd")
 
-[node name="Door" type="StaticBody3D" parent="." unique_id=1877258599]
+[node name="LevelEnd" type="StaticBody3D" parent="LevelManager" unique_id=1877258599]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.706338, 1.5347323, 12.559709)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Door" unique_id=971347266]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LevelManager/LevelEnd" unique_id=971347266]
 transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 0.3, 0, -0.8194413, 0)
 mesh = SubResource("BoxMesh_lj68t")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=1193520503]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/LevelEnd" unique_id=1193520503]
 transform = Transform3D(2, 0, 0, 0, 4, 0, 0, 0, 0.3, 0, 1.3398662, 0)
 shape = SubResource("BoxShape3D_opgfa")
 
-[node name="EndZone" type="Area3D" parent="Door" unique_id=216492895]
+[node name="EndZone" type="Area3D" parent="LevelManager/LevelEnd" unique_id=216492895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20854044, -0.11110401, -0.4828844)
 script = ExtResource("7_opgfa")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Door/EndZone" unique_id=1950813684]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelManager/LevelEnd/EndZone" unique_id=1950813684]
 transform = Transform3D(5.794061, 0, 0, 0, 6.3497467, 0, 0, 0, -4.733121, 0, 0, 0)
 shape = SubResource("BoxShape3D_yfsjt")
-
-[node name="Node" parent="." unique_id=634783044 instance=ExtResource("14_fixga")]
 
 [node name="Medkits" type="Node3D" parent="." unique_id=1760557411]
 
@@ -232,33 +272,30 @@ transform = Transform3D(15.915, 0, 0, 0, 15.915, 0, 0, 0, 15.915, 231.44537, 151
 material_override = SubResource("StandardMaterial3D_fixga")
 mesh = SubResource("SphereMesh_e14y5")
 
-[node name="TheVicar" parent="." unique_id=1440458563 instance=ExtResource("15_kdquw")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -51.71913, 7.414157, 0)
-
-[node name="Sketchfab_Scene" parent="." unique_id=1544220290 instance=ExtResource("16_kdquw")]
+[node name="Chapel" parent="." unique_id=1544220290 instance=ExtResource("16_kdquw")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, 20.16505, 8.329899, 1008.0967)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Sketchfab_Scene" unique_id=1710544918]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Chapel" unique_id=1710544918]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 49.800964, 6.82244, -27.750242)
-visible = false
 light_color = Color(0.7515759, 0.30485228, 0, 1)
 light_energy = 3.413
 omni_range = 21.125116
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="Sketchfab_Scene" unique_id=1799227412]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 45.913483, 5.455538, -27.711288)
-light_color = Color(0.7515759, 0.30485228, 0, 1)
-light_energy = 3.093
-omni_range = 319.767
+[node name="OmniLight3D4" type="OmniLight3D" parent="Chapel" unique_id=1799227412]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 50.75186, 4.088373, -27.711288)
+light_color = Color(0.56028485, 0.24683918, 0.20021337, 1)
+light_energy = 9.582
+light_indirect_energy = 7.982
+light_volumetric_fog_energy = 11.704
+omni_range = 585.959
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="Sketchfab_Scene" unique_id=1598044093]
+[node name="OmniLight3D3" type="OmniLight3D" parent="Chapel" unique_id=1598044093]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 46.312576, 6.4556456, -27.765879)
-visible = false
 light_color = Color(0.7515759, 0.30485228, 0, 1)
 light_energy = 3.413
 omni_range = 21.125116
 
-[node name="Decal" type="Decal" parent="Sketchfab_Scene" unique_id=1658929455]
+[node name="Decal" type="Decal" parent="Chapel" unique_id=1658929455]
 transform = Transform3D(0.14294948, -0.4740075, 0.069873564, -0.011671402, -0.07634039, -0.49399993, 0.47898778, 0.13960302, -0.03289031, 41.149292, -1.180515, -27.720589)
 size = Vector3(2.2373047, 2, 2.1726074)
 texture_albedo = ExtResource("24_at43v")
@@ -268,7 +305,7 @@ modulate = Color(1, 0.13333334, 0, 1)
 upper_fade = 0.1
 lower_fade = 0.1
 
-[node name="Decal2" type="Decal" parent="Sketchfab_Scene" unique_id=221296712]
+[node name="Decal2" type="Decal" parent="Chapel" unique_id=221296712]
 transform = Transform3D(4.2120013, -13.966634, 2.0588186, -4.590599, -3.3867104, -13.583194, 13.350355, 3.2418947, -5.320214, 51.52774, 5.1382847, -26.847363)
 size = Vector3(2.2373047, 2, 2.1726074)
 texture_albedo = ExtResource("24_at43v")
@@ -277,41 +314,6 @@ emission_energy = 0.0
 modulate = Color(1, 0.13333334, 0, 1)
 upper_fade = 0.1
 lower_fade = 0.1
-
-[node name="enemies" type="Node3D" parent="." unique_id=110525854]
-
-[node name="Echo" parent="enemies" unique_id=598788183 instance=ExtResource("18_4v5r2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.02939, 4.4314704, 225.05371)
-
-[node name="Echo2" parent="enemies" unique_id=1147390314 instance=ExtResource("18_4v5r2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.15712, 4.4314704, 236.08908)
-
-[node name="Echo3" parent="enemies" unique_id=1095760177 instance=ExtResource("18_4v5r2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.839188, 4.431474, 243.15865)
-
-[node name="TheBound" parent="enemies" unique_id=1429322609 instance=ExtResource("19_fydxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.589687, 4.3643723, 218.88678)
-
-[node name="TheBound2" parent="enemies" unique_id=1168037819 instance=ExtResource("19_fydxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.09268, 4.3643723, 236.09007)
-
-[node name="TheBound3" parent="enemies" unique_id=457527652 instance=ExtResource("19_fydxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.09268, 4.3643723, 231.09007)
-
-[node name="TheBound4" parent="enemies" unique_id=1684558740 instance=ExtResource("19_fydxc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2196026, 4.3643723, 220.1357)
-
-[node name="RemnantBeliever" parent="enemies" unique_id=918495341 instance=ExtResource("20_cddy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47, 10.5884285, 230)
-
-[node name="RemnantBeliever2" parent="enemies" unique_id=260303250 instance=ExtResource("20_cddy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.656765, 10.5884285, 225.65639)
-
-[node name="RemnantBeliever3" parent="enemies" unique_id=2122340508 instance=ExtResource("20_cddy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.142971, 10.588425, 248.77182)
-
-[node name="RemnantBeliever4" parent="enemies" unique_id=912693877 instance=ExtResource("20_cddy5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.142971, 10.588425, 248.77182)
 
 [node name="DeathScreenOverlay" parent="." unique_id=2101101841 instance=ExtResource("21_cddy5")]
 
@@ -338,10 +340,6 @@ shape = SubResource("BoxShape3D_at43v")
 [node name="Audio" type="AudioStreamPlayer" parent="MaraZone2" unique_id=1184113101]
 stream = ExtResource("26_rui7k")
 bus = &"Mara"
-
-[node name="Grass" parent="." unique_id=1858996503 instance=ExtResource("28_aa4jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.040436, 1.4104514, 951.6331)
-visible = false
 
 [node name="Door2" type="Node3D" parent="." unique_id=1059824722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.25558, 5.2863793, 976.8289)
@@ -370,3 +368,18 @@ transform = Transform3D(1.0058389, 0, 0, 0, 1.2163005, 0, 0, 0, 1.1947064, -0.44
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0029144287, -1.0766873, -0.079956055)
 
 [node name="Environment" parent="." unique_id=110939652 instance=ExtResource("30_77k2j")]
+
+[node name="Grass" parent="." unique_id=1858996503 instance=ExtResource("28_aa4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.040436, 1.4104514, 951.6331)
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=800313407]
+environment = ExtResource("31_wo3vv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=274841640]
+visible = false
+light_energy = 1.891
+light_indirect_energy = 13.8
+light_volumetric_fog_energy = 15.109
+directional_shadow_mode = 0
+sky_mode = 1
