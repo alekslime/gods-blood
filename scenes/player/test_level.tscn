@@ -28,7 +28,6 @@
 [ext_resource type="AudioStream" uid="uid://7ey03odyetkj" path="res://assets/audio/mara/they came in the night.ogg" id="26_8yd48"]
 [ext_resource type="AudioStream" uid="uid://bgucyvrgppxq" path="res://assets/audio/mara/they didnt scream.ogg" id="26_rui7k"]
 [ext_resource type="PackedScene" uid="uid://bqty0xxlecre1" path="res://Level1.tscn" id="28_aa4jf"]
-[ext_resource type="PackedScene" uid="uid://dxwvi31n7ksfs" path="res://assets/house/house.glb" id="29_s3rs7"]
 [ext_resource type="PackedScene" uid="uid://b1rg435musikf" path="res://DoorController.tscn" id="31_t0ar4"]
 [ext_resource type="PackedScene" uid="uid://k60sfbhvduh5" path="res://DoorAnimatable.tscn" id="31_wnmek"]
 [ext_resource type="PackedScene" uid="uid://cf3jr3e0ibn54" path="res://scenes/player/DoorFrame.tscn" id="32_wo3vv"]
@@ -40,8 +39,8 @@ shader_parameter/grain_scale = 2.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4v5r2"]
 shader = ExtResource("15_aapoj")
-shader_parameter/resolution_x = 396
-shader_parameter/resolution_y = 396
+shader_parameter/resolution_x = 793
+shader_parameter/resolution_y = 416
 shader_parameter/color_bit_depth = 4
 shader_parameter/dither_strength = 0.0
 shader_parameter/jitter_amount = 0.001
@@ -67,14 +66,25 @@ albedo_color = Color(0.44705883, 0.92156863, 0.22352941, 0.7137255)
 [sub_resource type="BoxMesh" id="BoxMesh_cddy5"]
 material = SubResource("StandardMaterial3D_s3rs7")
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t0ar4"]
+sky_top_color = Color(0.056401677, 0.016093163, 0.0011139486, 1)
+sky_horizon_color = Color(0.13333334, 0.05490196, 0.003921569, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_wnmek"]
+sky_material = SubResource("ProceduralSkyMaterial_t0ar4")
+
 [sub_resource type="Environment" id="Environment_opgfa"]
+background_mode = 2
+sky = SubResource("Sky_wnmek")
 ambient_light_source = 2
+tonemap_mode = 3
 glow_enabled = true
 glow_intensity = 1.45
 glow_bloom = 0.33
 glow_blend_mode = 0
 glow_hdr_threshold = 0.5
-fog_enabled = true
 fog_light_color = Color(0.20279434, 0.15891907, 0.29521593, 1)
 fog_light_energy = 0.56
 fog_sun_scatter = 0.13
@@ -108,7 +118,6 @@ script = ExtResource("4_acnbp")
 layer = 10
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=825763280]
-visible = false
 material = SubResource("ShaderMaterial_kdquw")
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,7 +145,7 @@ grow_vertical = 2
 visible = false
 
 [node name="Player" parent="." unique_id=2004408079 instance=ExtResource("1_ddwea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 164.01651, 3.5612183, 1084.1598)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.313782, 3.5612183, 1074.3772)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1956567446]
 
@@ -209,7 +218,7 @@ directional_shadow_pancake_size = 0.0
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1669449041]
 transform = Transform3D(0.41873434, -0.90782845, -0.02255482, 0.78713727, 0.35045606, 0.5075383, -0.45285332, -0.23027748, 0.8613337, 0, 0, 0)
-light_color = Color(0.4020043, 0.0063453596, 1.2032687e-07, 1)
+visible = false
 light_energy = 1.28
 light_indirect_energy = 4.2
 light_volumetric_fog_energy = 1.429
@@ -8688,21 +8697,6 @@ bus = &"Mara"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.040436, 1.4104514, 951.6331)
 visible = false
 
-[node name="house" parent="." unique_id=526650505 instance=ExtResource("29_s3rs7")]
-transform = Transform3D(1.425, 0, 0, 0, 1.425, 0, 0, 0, 1.425, 150.83516, 2.519548, 971.6192)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="house" unique_id=247164311]
-transform = Transform3D(0.70175445, 0, 0, 0, 0.70175445, 0, 0, 0, 0.70175445, -0.43579865, 1.6712381, 1.2288818)
-light_color = Color(0.8489821, 0, 0.045736745, 1)
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="house" unique_id=874414570]
-transform = Transform3D(0.70175445, 0, 0, 0, 0.70175445, 0, 0, 0, 0.70175445, 2.83107, 1.6712381, 1.2288818)
-light_color = Color(0.8489821, 0, 0.045736745, 1)
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="house" unique_id=446503678]
-transform = Transform3D(0.70175445, 0, 0, 0, 0.70175445, 0, 0, 0, 0.70175445, 1.4493484, 2.7223206, 1.2288818)
-light_energy = 0.127
-
 [node name="Door2" type="Node3D" parent="." unique_id=1059824722]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.25558, 5.2863793, 976.8289)
 
@@ -8714,4 +8708,17 @@ door_mesh = NodePath("../Door_016_22")
 transform = Transform3D(1.0058389, 0, 0, 0, 1.2163005, 0, 0, 0, 1.1947064, -0.44981384, -0.24417901, -0.14379883)
 
 [node name="DoorFrame_23" parent="Door2" unique_id=414300137 instance=ExtResource("32_wo3vv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0029144287, -1.0766873, -0.079956055)
+
+[node name="Door3" type="Node3D" parent="." unique_id=2123554787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.25558, 3.8541532, 1089.6393)
+
+[node name="DoorController" parent="Door3" unique_id=67282497 node_paths=PackedStringArray("door_mesh") instance=ExtResource("31_t0ar4")]
+transform = Transform3D(1.37546, 0, 0, 0, 1.5219433, 0, 0, 0, 1.561708, -0.021102905, -0.8923192, -0.080078125)
+door_mesh = NodePath("../Door_016_22")
+
+[node name="Door_016_22" parent="Door3" unique_id=1612169746 instance=ExtResource("31_wnmek")]
+transform = Transform3D(1.0058389, 0, 0, 0, 1.2163005, 0, 0, 0, 1.1947064, -0.44981384, -0.24417901, -0.14379883)
+
+[node name="DoorFrame_23" parent="Door3" unique_id=1942199212 instance=ExtResource("32_wo3vv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0029144287, -1.0766873, -0.079956055)
