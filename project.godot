@@ -31,9 +31,11 @@ settings/stdout/print_fps=true
 
 [display]
 
+window/size/viewport_width=320
+window/size/viewport_height=240
 window/size/mode=3
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
 
 [global_group]
 
@@ -155,4 +157,6 @@ restart={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+shading/overrides/force_vertex_shading=true

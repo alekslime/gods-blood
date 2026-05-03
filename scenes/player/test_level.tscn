@@ -35,17 +35,17 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdquw"]
 shader = ExtResource("15_e14y5")
 shader_parameter/grain_strength = 0.08
-shader_parameter/grain_scale = 2.0
+shader_parameter/grain_scale = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4v5r2"]
 shader = ExtResource("15_aapoj")
 shader_parameter/resolution_x = 793
-shader_parameter/resolution_y = 416
+shader_parameter/resolution_y = 484
 shader_parameter/color_bit_depth = 4
 shader_parameter/dither_strength = 0.0
 shader_parameter/jitter_amount = 0.001
-shader_parameter/jitter_speed = 1.2
-shader_parameter/jitter_frequency = 180.0
+shader_parameter/jitter_speed = 0.11
+shader_parameter/jitter_frequency = 13.41
 shader_parameter/chromatic_aberration_strength = 0.0
 shader_parameter/vignette_strength = 0.9470000449825
 shader_parameter/vignette_radius = 0.800000038
@@ -67,7 +67,7 @@ albedo_color = Color(0.44705883, 0.92156863, 0.22352941, 0.7137255)
 material = SubResource("StandardMaterial3D_s3rs7")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t0ar4"]
-sky_top_color = Color(0.056401677, 0.016093163, 0.0011139486, 1)
+sky_top_color = Color(0.29464036, 0, 0.0012040508, 1)
 sky_horizon_color = Color(0.13333334, 0.05490196, 0.003921569, 1)
 ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
@@ -80,17 +80,21 @@ background_mode = 2
 sky = SubResource("Sky_wnmek")
 ambient_light_source = 2
 tonemap_mode = 3
+sdfgi_enabled = true
 glow_enabled = true
 glow_intensity = 1.45
 glow_bloom = 0.33
 glow_blend_mode = 0
 glow_hdr_threshold = 0.5
-fog_light_color = Color(0.20279434, 0.15891907, 0.29521593, 1)
+fog_enabled = true
+fog_light_color = Color(0.067885414, 0.055841543, 0.4564805, 1)
 fog_light_energy = 0.56
 fog_sun_scatter = 0.13
 fog_density = 0.0068
-volumetric_fog_emission_energy = 0.0
-volumetric_fog_length = 21.92
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.39215687, 0.078431375, 0, 1)
+volumetric_fog_emission_energy = 0.1
+volumetric_fog_length = 128.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_lj68t"]
 
@@ -112,6 +116,7 @@ size = Vector3(337.51837, 17.444366, 7.229553)
 [node name="TestLevel" type="Node3D" unique_id=1500266787]
 
 [node name="HUD" parent="." unique_id=464664150 instance=ExtResource("3_nweu1")]
+visible = false
 script = ExtResource("4_acnbp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=764981364]
@@ -218,10 +223,10 @@ directional_shadow_pancake_size = 0.0
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=1669449041]
 transform = Transform3D(0.41873434, -0.90782845, -0.02255482, 0.78713727, 0.35045606, 0.5075383, -0.45285332, -0.23027748, 0.8613337, 0, 0, 0)
-visible = false
-light_energy = 1.28
-light_indirect_energy = 4.2
-light_volumetric_fog_energy = 1.429
+light_color = Color(0.2154918, 2.45166e-07, 4.813075e-08, 1)
+light_energy = 0.2
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 1.745
 light_specular = 0.0
 light_bake_mode = 1
 shadow_enabled = true
