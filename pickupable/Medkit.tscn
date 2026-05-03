@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://brrfftrnv42ls"]
+
+[ext_resource type="Script" uid="uid://82k820h452d6" path="res://pickupable/medkit_pickup.gd" id="1_p1bxr"]
+[ext_resource type="AudioStream" uid="uid://b5ome6csk183b" path="res://assets/sounds/pick up.mp3" id="2_1mpd0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p1bxr"]
+albedo_color = Color(0.34117648, 1, 1, 1)
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fniq2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ldlrw"]
+
+[node name="Medkit" type="Area3D" unique_id=1483463105]
+script = ExtResource("1_p1bxr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1865778911]
+material_override = SubResource("StandardMaterial3D_p1bxr")
+mesh = SubResource("BoxMesh_fniq2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=450950394]
+shape = SubResource("BoxShape3D_ldlrw")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1466550498]
+light_color = Color(4.7168137e-06, 0.8391552, 0.24089119, 1)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=1403877017]
+stream = ExtResource("2_1mpd0")

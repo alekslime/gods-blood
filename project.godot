@@ -13,7 +13,6 @@ config_version=5
 config/name="GodsBlood"
 run/main_scene="res://scenes/player/test_level.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
 
 [audio]
 
@@ -35,7 +34,7 @@ window/size/viewport_width=320
 window/size/viewport_height=240
 window/size/mode=3
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 
 [global_group]
 

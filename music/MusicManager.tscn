@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://1a5brlttxmhf"]
+
+[ext_resource type="Script" uid="uid://mg51uwyev8rj" path="res://music/music_manager.gd" id="1_73e63"]
+[ext_resource type="AudioStream" uid="uid://dr6x0x57mpa7l" path="res://assets/sounds/Council of Nine - Exit Statements.mp3" id="2_qjlvf"]
+[ext_resource type="AudioStream" uid="uid://nmnjesf5o6hf" path="res://assets/sounds/Osseous - Horror Music. Intense Synth & Percussion. Evil Choir Strings.mp3" id="3_3mv01"]
+[ext_resource type="AudioStream" uid="uid://dvdkvneo4esjw" path="res://assets/sounds/Hellblade_ Senua's Sacrifice Ambience - Main Menu.mp3" id="4_n3dty"]
+[ext_resource type="AudioStream" uid="uid://b2hyebch3epkc" path="res://assets/sounds/Darkest Dungeon OST - Torchless - Ruins Combat.mp3" id="5_l71nu"]
+
+[node name="Node" type="Node" unique_id=634783044]
+script = ExtResource("1_73e63")
+
+[node name="LayerAmbient" type="AudioStreamPlayer" parent="." unique_id=137018755]
+stream = ExtResource("2_qjlvf")
+
+[node name="LayerRythm" type="AudioStreamPlayer" parent="." unique_id=1980649526]
+stream = ExtResource("3_3mv01")
+
+[node name="LayerMelody" type="AudioStreamPlayer" parent="." unique_id=1434001640]
+stream = ExtResource("4_n3dty")
+
+[node name="LayerIntense" type="AudioStreamPlayer" parent="." unique_id=1720139974]
+stream = ExtResource("5_l71nu")

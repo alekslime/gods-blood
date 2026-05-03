@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2lc06jplyc6n" path="res://weapons/ashen_repeater.gd" id="1_li6ao"]
 [ext_resource type="PackedScene" uid="uid://n84a6rvs0fai" path="res://assets/gun/mac10.glb" id="2_njsra"]
-[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://BulletTrace.tscn" id="2_r355n"]
+[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://weapons/BulletTrace.tscn" id="2_r355n"]
 [ext_resource type="Script" uid="uid://btrlgcfrjt20h" path="res://weapons/weapon_animator.gd" id="4_8yj60"]
 
 [node name="AshenRepeater" type="Node3D" unique_id=1769328427]

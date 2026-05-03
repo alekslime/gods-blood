@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5a1ipw7wu8fw" path="res://weapons/the_grief.gd" id="1_slfk7"]
 [ext_resource type="PackedScene" uid="uid://dmg3qadyguxpw" path="res://assets/gun/apex_legends_peacekeeper_shotgun.glb" id="2_6xnwa"]
-[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://BulletTrace.tscn" id="2_euayn"]
+[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://weapons/BulletTrace.tscn" id="2_euayn"]
 [ext_resource type="Script" uid="uid://btrlgcfrjt20h" path="res://weapons/weapon_animator.gd" id="4_1kyf7"]
 
 [node name="TheGrief" type="Node3D" unique_id=173919637]

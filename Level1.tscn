@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bqty0xxlecre1"]
 
-[ext_resource type="Shader" uid="uid://beqwof417ca0u" path="res://Grass.tres" id="1_mc20k"]
+[ext_resource type="Shader" uid="uid://beqwof417ca0u" path="res://grass/Grass.tres" id="1_mc20k"]
 [ext_resource type="PackedScene" uid="uid://dcc8mtmxhjn6g" path="res://assets/grass/grass.glb" id="2_cove1"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mc20k"]

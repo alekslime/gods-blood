@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cfe5po52luu80"]
+
+[ext_resource type="Script" uid="uid://cdafmhdo4vrmb" path="res://pickupable/health_pickup.gd" id="1_xob0i"]
+[ext_resource type="AudioStream" uid="uid://b5ome6csk183b" path="res://assets/sounds/pick up.mp3" id="2_lj2ej"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xkcbj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_smb5a"]
+
+[node name="Area3D" type="Area3D" unique_id=1125131059]
+script = ExtResource("1_xob0i")
+size = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1617927624]
+transform = Transform3D(1, 0, 0, 0, 0.14, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xkcbj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2056277424]
+transform = Transform3D(1, 0, 0, 0, -0.14, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_smb5a")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=2046088352]
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=1482221321]
+stream = ExtResource("2_lj2ej")

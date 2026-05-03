@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://pb1g2me3jg55"]
+
+[ext_resource type="Script" uid="uid://g6id2fg4nn36" path="res://enemies/ranged_enemy.gd" id="1_05t1g"]
+[ext_resource type="PackedScene" uid="uid://cw3uwcigopehd" path="res://enemies/EnemyProjectile.tscn" id="2_o20mk"]
+[ext_resource type="AudioStream" uid="uid://3wo65aecbkbu" path="res://assets/sounds/enemy_hit.mp3" id="3_smfiu"]
+[ext_resource type="AudioStream" uid="uid://i7ki6lnrffo3" path="res://assets/sounds/enemy_death.mp3" id="4_8ir81"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o20mk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o20mk"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=571786349]
+script = ExtResource("1_05t1g")
+min_range = 1.0
+max_range = 50.0
+projectile_scene = ExtResource("2_o20mk")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=383656293]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1286230039]
+mesh = SubResource("CapsuleMesh_o20mk")
+
+[node name="ShootPoint" type="Marker3D" parent="." unique_id=1760183278]
+
+[node name="HitSound" type="AudioStreamPlayer" parent="." unique_id=148160864]
+stream = ExtResource("3_smfiu")
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=739998364]
+stream = ExtResource("4_8ir81")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1181449837]
+shape = SubResource("CapsuleShape3D_o20mk")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmyd428tmd48h"]
 
 [ext_resource type="Script" uid="uid://bfa402r6wimju" path="res://weapons/remnant.gd" id="1_53dqc"]
-[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://BulletTrace.tscn" id="2_my7me"]
+[ext_resource type="PackedScene" uid="uid://blenit6xr3wp6" path="res://weapons/BulletTrace.tscn" id="2_my7me"]
 [ext_resource type="PackedScene" uid="uid://cshh7rcfl4qe" path="res://assets/gun/heavy_revolver_concept.glb" id="2_v7avc"]
 [ext_resource type="Script" uid="uid://btrlgcfrjt20h" path="res://weapons/weapon_animator.gd" id="4_gu1ob"]
 
