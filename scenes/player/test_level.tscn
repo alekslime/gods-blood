@@ -423,7 +423,7 @@ sky_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.185753, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1296066964]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.100945, 9.567061, 2.4697533)
+transform = Transform3D(1, 0, 0, 0, 1.1505338, 0, 0, 0, 1, -88.85293, 10.532918, 4.8391848)
 mesh = SubResource("SphereMesh_77k2j")
 surface_material_override/0 = SubResource("ShaderMaterial_t0ar4")
 script = ExtResource("31_20n3f")
@@ -444,4 +444,76 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3980255, 0.27579975, 1.042
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2648468, -2.01256, -0.39092827)
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="MeshInstance3D" unique_id=1784803188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0788193, -2.01256, -0.39092827)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1038138203]
+transform = Transform3D(1, 0, 0, 0, 1.1505338, 0, 0, 0, 1, -88.50429, 10.532918, 0.15233898)
+mesh = SubResource("SphereMesh_77k2j")
+surface_material_override/0 = SubResource("ShaderMaterial_t0ar4")
+script = ExtResource("31_20n3f")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D2" unique_id=292427098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8267822, 1.0445604, 1.11587)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D2" unique_id=1614068681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0737, 1.4251461, -3.5741239)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="MeshInstance3D2" unique_id=1973722826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0016403, 0.81477356, -3.1758175)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="MeshInstance3D2" unique_id=415495001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3980255, 0.27579975, 1.042573)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="MeshInstance3D2" unique_id=482652271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2648468, -2.01256, -0.39092827)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="MeshInstance3D2" unique_id=257412851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0788193, -2.01256, -0.39092827)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1978522340]
+transform = Transform3D(1, 0, 0, 0, 1.1505338, 0, 0, 0, 1, -92.633095, 10.532918, 1.9398574)
+mesh = SubResource("SphereMesh_77k2j")
+surface_material_override/0 = SubResource("ShaderMaterial_t0ar4")
+script = ExtResource("31_20n3f")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D3" unique_id=2052291922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8267822, 1.0445604, 1.11587)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D3" unique_id=1253017244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0737, 1.4251461, -3.5741239)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="MeshInstance3D3" unique_id=1637135246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0016403, 0.81477356, -3.1758175)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="MeshInstance3D3" unique_id=302373392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3980255, 0.27579975, 1.042573)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="MeshInstance3D3" unique_id=1627408978]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2648468, -2.01256, -0.39092827)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="MeshInstance3D3" unique_id=540716996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0788193, -2.01256, -0.39092827)
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=319070951]
+transform = Transform3D(1, 0, 0, 0, 1.1505338, 0, 0, 0, 1, -92.011345, 10.532918, -1.077715)
+mesh = SubResource("SphereMesh_77k2j")
+surface_material_override/0 = SubResource("ShaderMaterial_t0ar4")
+script = ExtResource("31_20n3f")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D4" unique_id=2079883740]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8267822, 1.0445604, 1.11587)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D4" unique_id=181103283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0737, 1.4251461, -3.5741239)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="MeshInstance3D4" unique_id=97920341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0016403, 0.81477356, -3.1758175)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="MeshInstance3D4" unique_id=1835906117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3980255, 0.27579975, 1.042573)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="MeshInstance3D4" unique_id=800571844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2648468, -2.01256, -0.39092827)
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="MeshInstance3D4" unique_id=995669399]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0788193, -2.01256, -0.39092827)
