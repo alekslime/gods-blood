@@ -10,6 +10,13 @@ extends CharacterBody3D
 @export var gives_rage: bool = true
 @export var rage_on_kill: float = 25.0
 
+# --- Activation LOD: skip navigation + move_and_slide entirely when the
+# player is far away, instead of every enemy doing full physics every tick
+# regardless of relevance. Distance is only checked periodically (not every
+# frame) since even a cheap distance_to() adds up across many enemies.
+@export var activation_range: float = 45.0
+@export var range_check_interval: float = 0.5
+
 # --- Nodes (assigned in _ready) ---
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var hit_sound: AudioStreamPlayer3D = $HitSound
@@ -21,6 +28,8 @@ var current_health: float
 var is_dead: bool = false
 var player: Node3D = null
 var attack_timer: float = 0.0
+var _active: bool = true
+var _range_check_timer: float = 0.0
 const GRAVITY: float = 25.0
 
 
@@ -28,11 +37,25 @@ func _ready() -> void:
 	current_health = max_health
 	add_to_group("enemies")
 	player = get_tree().get_first_node_in_group("player")
+	if player:
+		_active = global_position.distance_to(player.global_position) <= activation_range
 
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
+	if not player:
+		return
+
+	# Cheap periodic check instead of a distance_to() every single tick.
+	_range_check_timer -= delta
+	if _range_check_timer <= 0.0:
+		_range_check_timer = range_check_interval
+		_active = global_position.distance_to(player.global_position) <= activation_range
+
+	if not _active:
+		return # too far to matter yet -- skip navigation and move_and_slide entirely
+
 	if not is_on_floor():
 		velocity.y -= GRAVITY * delta
 	attack_timer -= delta

@@ -68,6 +68,9 @@ size = Vector3(161.88562, 1, 268.27426)
 [sub_resource type="BoxShape3D" id="BoxShape3D_at43v"]
 size = Vector3(337.51837, 17.444366, 7.229553)
 
+[sub_resource type="Environment" id="Environment_t0ar4"]
+background_mode = 1
+
 [sub_resource type="SphereMesh" id="SphereMesh_77k2j"]
 radius = 0.6
 
@@ -123,7 +126,7 @@ grow_vertical = 2
 visible = false
 
 [node name="Player" parent="." unique_id=2004408079 instance=ExtResource("1_ddwea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.73086, 16.446472, -10.943848)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.20697, 10.696222, -48.001606)
 
 [node name="Enemies" type="Node3D" parent="." unique_id=1956567446]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 543.9769)
@@ -274,7 +277,8 @@ transform = Transform3D(-8.653962e-08, 0.28356484, 1.9797957, 0.07872892, 1.9782
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 49.800964, 6.82244, -27.750242)
 light_color = Color(0.7515759, 0.30485228, 0, 1)
 light_energy = 3.413
-omni_range = 21.125116
+omni_range = 19.887
+omni_attenuation = -0.046
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Chapel" unique_id=1799227412]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 50.75186, 4.088373, -27.711288)
@@ -282,13 +286,15 @@ light_color = Color(0.56028485, 0.24683918, 0.20021337, 1)
 light_energy = 9.582
 light_indirect_energy = 7.982
 light_volumetric_fog_energy = 11.704
-omni_range = 11.694
+omni_range = 19.887
+omni_attenuation = -0.046
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Chapel" unique_id=1598044093]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 46.312576, 6.4556456, -27.765879)
 light_color = Color(0.7515759, 0.30485228, 0, 1)
 light_energy = 3.413
-omni_range = 21.125116
+omni_range = 19.887
+omni_attenuation = -0.046
 
 [node name="Decal" type="Decal" parent="Chapel" unique_id=1658929455]
 transform = Transform3D(0.14294948, -0.4740075, 0.069873564, -0.011671402, -0.07634039, -0.49399993, 0.47898778, 0.13960302, -0.03289031, 41.149292, -1.180515, -27.720589)
@@ -410,6 +416,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.040436, 1.4104514, 951.63
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=800313407]
+environment = SubResource("Environment_t0ar4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=274841640]
 visible = false
@@ -439,6 +446,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0016403, 0.81477356, -3.17
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="MeshInstance3D" unique_id=185797239]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3980255, 0.27579975, 1.042573)
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="MeshInstance3D" unique_id=1367808705]
+transform = Transform3D(1, 0, 0, 0, 0.8691618, 0, 0, 0, 1, 42.973484, 16.95721, -8.306806)
+omni_range = 35.395
+omni_attenuation = -1.092
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="MeshInstance3D" unique_id=1506294142]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2648468, -2.01256, -0.39092827)
@@ -479,6 +491,11 @@ script = ExtResource("31_20n3f")
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D3" unique_id=2052291922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8267822, 1.0445604, 1.11587)
 
+[node name="OmniLight3D7" type="OmniLight3D" parent="MeshInstance3D3" unique_id=1692830642]
+transform = Transform3D(1, 0, 0, 0, 0.8691618, 0, 0, 0, 1, 24.732285, 22.551655, -12.296114)
+omni_range = 26.97
+omni_attenuation = -0.569
+
 [node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D3" unique_id=1253017244]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0737, 1.4251461, -3.5741239)
 
@@ -495,25 +512,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2648468, -2.01256, -0.39092
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0788193, -2.01256, -0.39092827)
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=319070951]
-transform = Transform3D(1, 0, 0, 0, 1.1505338, 0, 0, 0, 1, -92.011345, 10.532918, -1.077715)
+transform = Transform3D(0.8750713, 0, 0, 0, 1.0251447, 0, 0, 0, 0.86642045, -66.309364, 10.532918, 6.4639754)
 mesh = SubResource("SphereMesh_77k2j")
 surface_material_override/0 = SubResource("ShaderMaterial_t0ar4")
 script = ExtResource("31_20n3f")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MeshInstance3D4" unique_id=2079883740]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8267822, 1.0445604, 1.11587)
+transform = Transform3D(1, 0, 0, 0, 1.305229, 0, 0, 0, 1, 0.3057785, 1.6096134, -0.9521785)
+light_color = Color(0.24705882, 0, 0, 1)
+omni_range = 3.58
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D4" unique_id=181103283]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0737, 1.4251461, -3.5741239)
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="MeshInstance3D4" unique_id=97920341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0016403, 0.81477356, -3.1758175)
-
-[node name="OmniLight3D4" type="OmniLight3D" parent="MeshInstance3D4" unique_id=1835906117]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3980255, 0.27579975, 1.042573)
-
-[node name="OmniLight3D5" type="OmniLight3D" parent="MeshInstance3D4" unique_id=800571844]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2648468, -2.01256, -0.39092827)
-
-[node name="OmniLight3D6" type="OmniLight3D" parent="MeshInstance3D4" unique_id=995669399]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0788193, -2.01256, -0.39092827)
+[node name="OmniLight3D2" type="OmniLight3D" parent="MeshInstance3D4" unique_id=224946469]
+transform = Transform3D(1.142764, 0, 0, 0, 0.97547203, 0, 0, 0, 1.1541741, 0.19889069, -1.2441015, -0.95217943)
+light_color = Color(0.24705882, 0, 0, 1)
+omni_range = 3.58

@@ -9,6 +9,10 @@ extends MeshInstance3D
 
 @export var player: Node3D                  # drag the player node here (or auto-find below)
 @export var track_speed: float = 4.0        # how fast the eye reorients toward the player (higher = snappier, more instant)
+@export var randomize_stress: bool = true   # give each eye a random amount of bloodshot/veins on spawn
+@export_range(0.0, 1.0) var stress_min: float = 0.0
+@export_range(0.0, 1.0) var stress_max: float = 0.6
+@export_range(0.0, 1.0) var fixed_stress: float = 0.0  # used instead of random if randomize_stress is off -- dial per-eye by hand in the Inspector
 
 var _mat: ShaderMaterial
 
@@ -28,6 +32,8 @@ func _ready() -> void:
 	if _mat:
 		_mat.set_shader_parameter("open_amount", 1.0)
 		_mat.set_shader_parameter("pupil_offset", Vector2.ZERO)
+		var initial_stress: float = randf_range(stress_min, stress_max) if randomize_stress else fixed_stress
+		_mat.set_shader_parameter("stress", initial_stress)
 
 
 func _process(delta: float) -> void:
@@ -59,6 +65,12 @@ func force_closed() -> void:
 	pass
 
 
-## Kept for compatibility -- no-op, since there's no eyelid animation anymore.
+## Sets bloodshot/vein intensity directly (0 = clean, 1 = bulging/bloody).
+## Called automatically once from _ready() with a randomized or fixed value
+## (see randomize_stress / stress_min / stress_max / fixed_stress above), but
+## you can also call this at runtime -- e.g. increase it the longer the
+## player lingers near this eye, or wire it to a trigger area for a scripted
+## jump in bloodshot-ness.
 func set_stress(value: float) -> void:
-	pass
+	if _mat:
+		_mat.set_shader_parameter("stress", clamp(value, 0.0, 1.0))
